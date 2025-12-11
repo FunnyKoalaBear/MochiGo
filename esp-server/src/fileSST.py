@@ -1,3 +1,5 @@
+#this program performs SST on a single audio file 
+
 import wave
 import json
 import sys
@@ -12,8 +14,12 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.normpath(os.path.join(BASE_DIR, ".."))
 
 MODEL_DIR = os.path.join(ROOT_DIR, "models")
-MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-small-en-us-0.15/vosk-model-small-en-us-0.15")   #vosk-model
+MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-small-en-us-0.15/vosk-model-small-en-us-0.15")   #vosk-model tiny
+#MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-small-en-us-0.15/vosk-model-small-en-us-0.15")   #vosk-model medium
+#MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-small-en-us-0.15/vosk-model-small-en-us-0.15")   #vosk-model large
 
+#converts .mp3 file to .wav
+#ffmpeg -i original_recording.mp3 -acodec pcm_s16le -ar 16000 -ac 1 test_audio.wav
 DATA_DIR = os.path.join(ROOT_DIR, "data")
 AUDIO_FILE = os.path.join(DATA_DIR, "sampleRecording.wav")
 
