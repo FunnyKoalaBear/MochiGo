@@ -4,11 +4,16 @@ import sys
 import os
 from vosk import Model, KaldiRecognizer
 
-# --- CONFIGURATION ---
-MODEL_PATH = "model"     # Folder where you extracted vosk-model-en-us-0.22
+import time
 
+
+# --- CONFIGURATION ---
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))  
 ROOT_DIR = os.path.normpath(os.path.join(BASE_DIR, ".."))
+
+MODEL_DIR = os.path.join(ROOT_DIR, "models")
+MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-small-en-us-0.15/vosk-model-small-en-us-0.15")   #vosk-model
+
 DATA_DIR = os.path.join(ROOT_DIR, "data")
 AUDIO_FILE = os.path.join(DATA_DIR, "sampleRecording.wav")
 
@@ -40,6 +45,8 @@ rec = KaldiRecognizer(model, wf.getframerate())
 print(f"🎧 Processing '{AUDIO_FILE}'...")
 
 # --- PROCESS FILE ---
+start = time.perf_counter()
+
 while True:
     data = wf.readframes(4000)
     if len(data) == 0:
@@ -54,4 +61,7 @@ final_result = json.loads(rec.FinalResult())
 if final_result['text']:
     print(f"📝 Text: {final_result['text']}")
 
+
+end = time.perf_counter()
+print(f"Time taken: {end - start:.6f} seconds")
 wf.close()
