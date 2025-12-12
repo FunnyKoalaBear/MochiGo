@@ -4,6 +4,8 @@ import json
 import pyaudio
 from vosk import Model, KaldiRecognizer
 
+import time
+
 # --- CONFIGURATION ---
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.normpath(os.path.join(BASE_DIR, ".."))
@@ -48,13 +50,18 @@ try:
     while True:
         # Read data from the microphone
         data = stream.read(4000, exception_on_overflow=False)
-        
+        start = time.perf_counter()
+
         # Feed to Vosk
         if rec.AcceptWaveform(data):
             # A full sentence/phrase was completed
             result = json.loads(rec.Result())
+
             if result['text']:
                 print(f"📝 You said: {result['text']}")
+
+                end = time.perf_counter()
+                print(f"Time taken: {end - start:.6f} seconds")
         else:
             # (Optional) Print partial results to see it typing as you speak
             # partial = json.loads(rec.PartialResult())
