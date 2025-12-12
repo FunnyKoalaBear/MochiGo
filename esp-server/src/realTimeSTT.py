@@ -33,12 +33,10 @@ p = pyaudio.PyAudio()
 stream = p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=1024)
 stream.start_stream()
 
-print("🎧 Listening... ")
-
 
 # --- SILENCE SENSITIVITY --
-SILENCE_TIMEOUT = 0.5 
-SILENCE_THRESHOLD = 200 #Below threshold indicates silence, 50-200 for good mics, 500+ for noisy mics
+SILENCE_TIMEOUT = 0.6
+SILENCE_THRESHOLD = np.mean([np.abs(np.frombuffer(stream.read(1024), dtype=np.int16)).mean() for _ in range(50)]) * 1.5 #Below threshold indicates silence, 50-200 for good mics, 500+ for noisy mics
 
 ### MAKE THIS SO THAT SILENCE THRESHOLD IS DYNAMICALLY SET IN THE FUTURE 
 
@@ -49,6 +47,8 @@ speaking = False
 
 
 # --- PROCESS LIVE AUDIO ---
+print("🎧 Listening... ")
+
 try:
     while True:
         # Read data from the microphone
@@ -79,19 +79,29 @@ try:
                 last_partial_time = time.perf_counter()
 
                 current_text = partial['partial']
-                last_speech_time = time.perf_counter() # Reset silence timer
-                speaking = True
+
+                # --- 1. CALCULATE VOLUME FIRST ---
+                audio_chunk = np.frombuffer(data, dtype=np.int16)
+                volume = np.abs(audio_chunk).mean()
+                #print(volume)
+
+                # If volume is loud, update the timer (User is physically making noise)
+                if volume > SILENCE_THRESHOLD:
+                    last_speech_time = time.perf_counter()
+                    print(volume)
+                    speaking = True
+                #last_speech_time = time.perf_counter() # Reset silence timer
+                #speaking = True
                 # Print current thought
                 print(f"🗣️  ... {current_text}", end='\r')
-
-                
+                            
 
         #MANUAL SILENCE CHECK TO STOP EARLY 
         audio_chunk = np.frombuffer(data, dtype=np.int16)
         volume = np.abs(audio_chunk).mean()
 
-                # If we are currently "speaking" but the volume is low...
-        if speaking and volume < SILENCE_THRESHOLD:
+        # If we are currently "speaking" but the volume is low...
+        if speaking and (volume < SILENCE_THRESHOLD):
             # Check how long it has been quiet
             time_since_speech = time.perf_counter() - last_speech_time
             
