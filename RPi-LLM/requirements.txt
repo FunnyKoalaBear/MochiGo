@@ -1,0 +1,2 @@
+# Core dependencies for RPi-LLM
+ollama>=0.3.0

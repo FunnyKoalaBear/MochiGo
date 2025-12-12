@@ -9,14 +9,18 @@ from vosk import Model, KaldiRecognizer
 import time
 
 
-# --- CONFIGURATION ---
+# --- STT MODEL CONFIGURATION ---
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))  
 ROOT_DIR = os.path.normpath(os.path.join(BASE_DIR, ".."))
 
 MODEL_DIR = os.path.join(ROOT_DIR, "models")
-MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-small-en-us-0.15/vosk-model-small-en-us-0.15")   #vosk-model tiny
-#MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-small-en-us-0.15/vosk-model-small-en-us-0.15")   #vosk-model medium
-#MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-small-en-us-0.15/vosk-model-small-en-us-0.15")   #vosk-model large
+#MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-small-en-us-0.15/vosk-model-small-en-us-0.15")   #vosk-model tiny
+MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-en-us-0.22-lgraph/vosk-model-en-us-0.22-lgraph")   #vosk-model medium
+#MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-en-us-0.22/vosk-model-en-us-0.22")   #vosk-model large
+
+#MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-small-ja-0.22/vosk-model-small-ja-0.22")   #Japanese vosk model small
+#MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-ja-0.22/vosk-model-ja-0.22")   #Japanese vosk-model large
+
 
 #converts .mp3 file to .wav
 #ffmpeg -i original_recording.mp3 -acodec pcm_s16le -ar 16000 -ac 1 test_audio.wav
