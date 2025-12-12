@@ -1,7 +1,4 @@
-import os
-import sys
-import json
-import pyaudio
+import os, sys, json, pyaudio
 from vosk import Model, KaldiRecognizer
 import numpy as np # Used for fast volume calculation
 import time
@@ -18,8 +15,8 @@ MODEL_DIR = os.path.join(ROOT_DIR, "models")
 #MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-en-us-0.22/vosk-model-en-us-0.22")   #vosk-model large
 
 #JAPANESE MODELS
-MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-small-ja-0.22/vosk-model-small-ja-0.22")   #Japanese vosk model small
-#MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-ja-0.22/vosk-model-ja-0.22")   #Japanese vosk-model large
+#MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-small-ja-0.22/vosk-model-small-ja-0.22")   #Japanese vosk model small
+MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-ja-0.22/vosk-model-ja-0.22")   #Japanese vosk-model large
 
 # --- Model check ---
 if not os.path.exists(MODEL_PATH):
@@ -39,19 +36,16 @@ stream.start_stream()
 print("🎧 Listening... ")
 
 
-# --- SILENCE SENSITIVITY ---
+# --- SILENCE SENSITIVITY --
 SILENCE_TIMEOUT = 0.5 
 SILENCE_THRESHOLD = 200 #Below threshold indicates silence, 50-200 for good mics, 500+ for noisy mics
 
+### MAKE THIS SO THAT SILENCE THRESHOLD IS DYNAMICALLY SET IN THE FUTURE 
 
 # --- LATENCY VARIABLES ---
 last_partial_time = 0
-is_speaking = False
-
-last_speech_time = time.perf_counter()
 current_text = ""
 speaking = False
-
 
 
 # --- PROCESS LIVE AUDIO ---
@@ -59,7 +53,6 @@ try:
     while True:
         # Read data from the microphone
         data = stream.read(1024, exception_on_overflow=False)
-        #start = time.perf_counter()
 
         # Feed data to Vosk (Non-Blocking)
         if rec.AcceptWaveform(data):
@@ -71,8 +64,6 @@ try:
                 print(f"📝 Final output: {result['text']}")
                 current_text = ""
                 speaking = False
-                #end = time.perf_counter()
-                #print(f"Time taken: {end - start:.6f} seconds")
 
                 latency = processing_finish_time - last_partial_time
                 is_speaking = False
