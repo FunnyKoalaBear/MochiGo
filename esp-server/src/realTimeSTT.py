@@ -22,7 +22,6 @@ if not os.path.exists(MODEL_PATH):
 print(f"Loading Model from {MODEL_PATH}...")
 model = Model(MODEL_PATH)
 
-# Initialize Recognizer
 # 16000 Hz is standard for Vosk. We must set the mic to match this.
 rec = KaldiRecognizer(model, 16000)
 
@@ -63,9 +62,7 @@ try:
                 end = time.perf_counter()
                 print(f"Time taken: {end - start:.6f} seconds")
         else:
-            # (Optional) Print partial results to see it typing as you speak
-            # partial = json.loads(rec.PartialResult())
-            # print(f"    ... {partial['partial']}", end='\r')
+            ##WORK ON THIS TO PRINT PARTIAL RESULTS AS YOU TYPE
             pass
 
 except KeyboardInterrupt:
