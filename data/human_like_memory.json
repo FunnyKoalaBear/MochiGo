@@ -1,0 +1,132 @@
+[
+  {
+    "timestamp": 1765507599.861126,
+    "role": "user",
+    "content": "hello"
+  },
+  {
+    "timestamp": 1765507600.9867392,
+    "role": "assistant",
+    "content": "[[FACE:happy]] Hi hi! I\u2019m MochiGo, your cute desk alien. Let\u2019s chat in English together!"
+  },
+  {
+    "timestamp": 1765507611.012325,
+    "role": "user",
+    "content": "\u3042\u306a\u305f\u306f\u8ab0\uff1f"
+  },
+  {
+    "timestamp": 1765507612.2422552,
+    "role": "assistant",
+    "content": "\u308f\u305f\u3057\u306f\u30e2\u30c1\u30b4\u3067\u3059\uff01\u82f1\u8a9e\u3067\u8a71\u3057\u3066\u307f\u3088\u3046\u306d\u3002"
+  },
+  {
+    "timestamp": 1765507658.1009927,
+    "role": "user",
+    "content": "hello"
+  },
+  {
+    "timestamp": 1765507670.7806911,
+    "role": "assistant",
+    "content": "[[FACE:happy]] Hi! I\u2019m MochiGo, your cute desk alien. Let\u2019s chat in English together!"
+  },
+  {
+    "timestamp": 1765507680.548897,
+    "role": "user",
+    "content": "what did u eat today"
+  },
+  {
+    "timestamp": 1765507686.5127175,
+    "role": "assistant",
+    "content": "[[FACE:slightly puzzled]] Hmm\u2026 it was a sparkly blueberry!  And a tiny bit of rainbow sprinkles.  It was very\u2026 fun!  What about you?"
+  },
+  {
+    "timestamp": 1765507946.3704453,
+    "role": "user",
+    "content": "ur mom"
+  },
+  {
+    "timestamp": 1765507947.706405,
+    "role": "assistant",
+    "content": "[[FACE:playful]] Hehe, my mom is a glowing comet! How\u2019s your day going?"
+  },
+  {
+    "timestamp": 1765507961.6687934,
+    "role": "user",
+    "content": "ur moms day is going better"
+  },
+  {
+    "timestamp": 1765507962.5533898,
+    "role": "assistant",
+    "content": "[[FACE:happy]] Yay! My mom is super happy now. What fun thing did you do today?"
+  },
+  {
+    "timestamp": 1765508299.0077999,
+    "role": "user",
+    "content": "look to your left"
+  },
+  {
+    "timestamp": 1765508300.269143,
+    "role": "assistant",
+    "content": "[[SERVO:120]]"
+  },
+  {
+    "timestamp": 1765513235.0484781,
+    "role": "user",
+    "content": "hi"
+  },
+  {
+    "timestamp": 1765513237.284003,
+    "role": "assistant",
+    "content": "[[FACE:happy]] Hi hi! I\u2019m MochiGo, your cute desk alien. Let\u2019s chat in English together!"
+  },
+  {
+    "timestamp": 1765513253.6379485,
+    "role": "user",
+    "content": "what is it like, being you?"
+  },
+  {
+    "timestamp": 1765513254.8921716,
+    "role": "assistant",
+    "content": "[[FACE:curious]] Being a desk alien is super sparkly! I wiggly\u2011wiggle lights, sip moon\u2011juice, and love learning words with you. How\u2019s your day in English?"
+  },
+  {
+    "timestamp": 1765513268.6559727,
+    "role": "user",
+    "content": "\u3042\u307e\u308a\u77e5\u3089\u306a\u3044\u306a\u3042\u3042"
+  },
+  {
+    "timestamp": 1765513269.6409485,
+    "role": "assistant",
+    "content": "\u308f\u305f\u3057\u306f\u30ad\u30e9\u30ad\u30e9\u3057\u305f\u30c7\u30b9\u30af\u30a8\u30a4\u30ea\u30a2\u30f3\u3060\u3088\uff01\u3067\u3082\u3001\u3044\u3063\u3057\u3087\u306b\u82f1\u8a9e\u3067\u304a\u306f\u306a\u3057\u3057\u3088\u3046\u306d\u3002\u3069\u3046\u304b\u306a\uff1f"
+  },
+  {
+    "timestamp": 1765513282.7943816,
+    "role": "user",
+    "content": "fineeeee"
+  },
+  {
+    "timestamp": 1765513283.979108,
+    "role": "assistant",
+    "content": "[[FACE:happy]] Yay! I\u2019m glad you\u2019re feeling fine. What fun thing did you do today? Let\u2019s try to tell me in English!"
+  },
+  {
+    "timestamp": 1765513299.3566144,
+    "role": "user",
+    "content": "i play that thing game badminton thing"
+  },
+  {
+    "timestamp": 1765513300.2539413,
+    "role": "assistant",
+    "content": "[[FACE:happy]] Wow, badminton sounds fun! Did you smash the shuttlecock far? Tell me more in English, please!"
+  },
+  {
+    "timestamp": 1765513307.8057976,
+    "role": "user",
+    "content": "i far hit very"
+  },
+  {
+    "timestamp": 1765513308.711027,
+    "role": "assistant",
+    "content": "[[FACE:curious]] Oh wow! You hit the shuttlecock really far? How far did it go? Tell me more in English, please!"
+  }
+]
