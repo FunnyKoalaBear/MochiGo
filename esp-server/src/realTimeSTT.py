@@ -12,11 +12,11 @@ MODEL_DIR = os.path.join(ROOT_DIR, "models")
 #ENGLISH MODELS
 #MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-small-en-us-0.15/vosk-model-small-en-us-0.15")   #vosk-model tiny
 #MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-en-us-0.22-lgraph/vosk-model-en-us-0.22-lgraph")   #vosk-model medium
-#MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-en-us-0.22/vosk-model-en-us-0.22")   #vosk-model large
+MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-en-us-0.22/vosk-model-en-us-0.22")   #vosk-model large
 
 #JAPANESE MODELS
 #MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-small-ja-0.22/vosk-model-small-ja-0.22")   #Japanese vosk model small
-MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-ja-0.22/vosk-model-ja-0.22")   #Japanese vosk-model large
+#MODEL_PATH = os.path.join(MODEL_DIR, "vosk-model-ja-0.22/vosk-model-ja-0.22")   #Japanese vosk-model large
 
 # --- Model check ---
 if not os.path.exists(MODEL_PATH):
@@ -35,10 +35,9 @@ stream.start_stream()
 
 
 # --- SILENCE SENSITIVITY --
-SILENCE_TIMEOUT = 0.6
+SILENCE_TIMEOUT = 0.6 #seconds
 SILENCE_THRESHOLD = np.mean([np.abs(np.frombuffer(stream.read(1024), dtype=np.int16)).mean() for _ in range(50)]) * 1.5 #Below threshold indicates silence, 50-200 for good mics, 500+ for noisy mics
 
-### MAKE THIS SO THAT SILENCE THRESHOLD IS DYNAMICALLY SET IN THE FUTURE 
 
 # --- LATENCY VARIABLES ---
 last_partial_time = 0
@@ -53,6 +52,16 @@ try:
     while True:
         # Read data from the microphone
         data = stream.read(1024, exception_on_overflow=False)
+        
+        #MANUAL SILENCE CHECK TO STOP EARLY 
+        audio_chunk = np.frombuffer(data, dtype=np.int16)
+        volume = np.abs(audio_chunk).mean()
+
+        if (volume < SILENCE_THRESHOLD * 1.2):
+
+            #dynamically updating the silence threshold if the room got quieter 
+            SILENCE_THRESHOLD = (SILENCE_THRESHOLD * 0.95) + (volume * 1.5 * 0.05) 
+            #print(f"Silence threshold updated to {SILENCE_THRESHOLD}")
 
         # Feed data to Vosk (Non-Blocking)
         if rec.AcceptWaveform(data):
@@ -83,22 +92,19 @@ try:
                 # --- 1. CALCULATE VOLUME FIRST ---
                 audio_chunk = np.frombuffer(data, dtype=np.int16)
                 volume = np.abs(audio_chunk).mean()
-                #print(volume)
+                #print(f"Current volume is {volume}")            
+
 
                 # If volume is loud, update the timer (User is physically making noise)
                 if volume > SILENCE_THRESHOLD:
                     last_speech_time = time.perf_counter()
-                    print(volume)
+                    # print(volume)
                     speaking = True
-                #last_speech_time = time.perf_counter() # Reset silence timer
-                #speaking = True
+    
                 # Print current thought
                 print(f"🗣️  ... {current_text}", end='\r')
                             
 
-        #MANUAL SILENCE CHECK TO STOP EARLY 
-        audio_chunk = np.frombuffer(data, dtype=np.int16)
-        volume = np.abs(audio_chunk).mean()
 
         # If we are currently "speaking" but the volume is low...
         if speaking and (volume < SILENCE_THRESHOLD):
