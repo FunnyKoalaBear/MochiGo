@@ -1,1 +1,4 @@
 vosk
+webrtcvad
+numpy
+pkg_resources
