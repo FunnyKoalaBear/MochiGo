@@ -6,7 +6,7 @@ motors = Motor()
 
 #logic comes here 
 while True:
-    motors.oscillate()
+    motors.oscillate(0.01, 10)
     eyes.neutral()
 
     #time.sleep(0.5)    

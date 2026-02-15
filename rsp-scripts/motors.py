@@ -35,5 +35,13 @@ class Motor():
 
 m = Motor()
 
-while True:
-    m.oscillate(0.01, 10)
+
+# while True:
+#     m.oscillate(0.01, 10)
+
+
+try:
+    while True:
+        m.oscillate(0.01, 10)
+except KeyboardInterrupt:
+    m.stop()    
