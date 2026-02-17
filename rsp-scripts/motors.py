@@ -33,15 +33,12 @@ class Motor():
         self.pi.set_servo_pulsewidth(12, 0)
 
 
-m = Motor()
+#runs this if file is run directly 
+if __name__ == "__main__":
+    m = Motor()
 
-
-# while True:
-#     m.oscillate(0.01, 10)
-
-
-try:
-    while True:
-        m.oscillate(0.01, 10)
-except KeyboardInterrupt:
-    m.stop()    
+    try:
+        while True:
+            m.oscillate(0.01, 10)
+    except KeyboardInterrupt:
+        m.stop()

@@ -7,6 +7,7 @@ from luma.core.interface.parallel import bitbang_6800
 from luma.core.render import canvas
 from luma.oled.device import ssd1306
 from PIL import Image, ImageDraw
+import pigpio
 import sys
 import time
 
@@ -22,6 +23,9 @@ class Eyes():
     def __init__(self, display):
         self.display = display
         self.display.clear() #erase everything at start
+        
+        self.pi = pigpio.pi()
+        self.pi.set_pad_strength(0, 14) #equalizing eye brightness
 
         self.display.bounding_box = (0, 0, width-1, height-1)
 
@@ -29,6 +33,8 @@ class Eyes():
         neutralR = Image.open("img/neutral.png")
         neutralR = neutralR.crop([6, 0, 56, 32])
         self.neutral_img = neutralR.resize((width, height)).convert("1") #1>
+
+    
 
     def neutral(self):
         # with canvas(self.display) as draw:
@@ -52,16 +58,15 @@ class Eyes():
     def blink(self):
         pass
 
-
-#eye logic
-eyes = Eyes(display)
-
-while True:
-    eyes.neutral()
-
-    while 1:
-        time.sleep(0.5) #display stays oon
+#add time out functionality to power down with cleanup()
 
 
+#runs this if file is run directly 
+if __name__ == "__main__":
+    eyes = Eyes(display)
 
-    #add time out functionality to power down with cleanup()
+    while True:
+        eyes.neutral()
+        time.sleep(0.5)
+
+
