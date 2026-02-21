@@ -1,6 +1,8 @@
 from eyes import Eyes, display
 from motors import Motor
+from omniMic import Microphone
 import time
+
 
 eyes = Eyes(display)
 motors = Motor()
