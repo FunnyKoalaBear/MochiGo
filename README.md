@@ -1,6 +1,8 @@
 # MochiGo
 
-![MochiGo Robot](Docs/Mochigo_Concept_Art.png) 
+<p align="center">
+  <img src="Docs/Mochigo_Concept_Art.png" width="600"/>
+</p>
 
 An interactive English teaching robot powered by speech recognition, LLM capabilities, and real-time feedback.
 
