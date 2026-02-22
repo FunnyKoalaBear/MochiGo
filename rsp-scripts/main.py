@@ -4,25 +4,63 @@ from omniMic import Microphone
 import time
 import threading 
 
+
 #initialising classes 
 eyes = Eyes(display)
 motors = Motor()
 mic = Microphone()
 
 
-#mochigo logic
+#setting up functions 
+def neutral():
+    while not killSwitch.is_set():
+            try:
+                eyes.neutral()
+            except Exception:
+                break # Exit silently if the main program is shutting down
 
+def oscillate(delay, step):
+    while not killSwitch.is_set():
+            try:
+                motors.oscillate(delay, step)
+            except Exception:
+                motors.stop()
+                break
+
+def record():
+    while not killSwitch.is_set():
+            try:
+                mic.record()
+            except Exception:
+                break
+
+
+#starting threads 
+threads = []
+t1 = threading.Thread(target=neutral, daemon=True)
+threads.append(t1)
+
+t2 = threading.Thread(target=oscillate, kwargs={"delay":0.01, "step":10}, daemon=True)
+threads.append(t2)
+
+t3 = threading.Thread(target=record, daemon=True)
+threads.append(t3)
+
+killSwitch = threading.Event() #daemon event that toggles all functions to stop 
+
+
+#starting all background actions 
+for t in threads:
+    t.start()
+
+
+#mochigo logic
 try:
     while True:
-        motors.oscillate(0.01, 10)
-        mic.record()
-        eyes.neutral()
-        time.sleep(10)
-
-        #time.sleep(0.5)       
+        time.sleep(0.1)
 
 except KeyboardInterrupt:
-    motors.stop() 
-
-
-
+    motors.stop()
+    killSwitch.set()
+    exit()
+    
