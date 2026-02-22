@@ -21,10 +21,22 @@ class Microphone():
         #basic configuration 
         self.sample_rate = 44100
         self.channels = 1
-        self.duration = 5
+        self.duration = 2
+
+        sd.default.samplerate = self.sample_rate
+        sd.default.channels = self.channels
     
     def record(self):
-        pass
+        print("Starting recording")
+        self.myrecording = myrecording = sd.rec(int(self.duration * self.sample_rate), dtype='int16')
+    
+        sd.wait() #pauses function till recording is complete
+
+        #saving recording 
+        filename = "micRecording.wav"
+        write(filename, self.sample_rate, self.myrecording)
+        print(f"💾 Saved successfully as '{filename}'.")
+        
 
     def play(self):
         pass
@@ -35,8 +47,8 @@ if __name__ == "__main__":
     mic = Microphone()
 
     while True:
-        pass
-
+        mic.record()
+        exit()
 
 #to start a python webserver 
 #python -m http.server 8000

@@ -1,5 +1,17 @@
 # this program will control the motors for cam and follower mechanism of the project 
 
+#To make the pigpio library use PWM clock do the following:  
+#temporary fix in terminal: 
+#sudo killall pigpiod
+#sudo pigpiod -t 0
+
+#permanent fix in terminal 
+#sudo nano /lib/systemd/system/pigpiod.service
+#Modify the ExecStart line by adding -t 0
+#ExecStart=/usr/bin/pigpiod -l -t 0
+#sudo systemctl daemon-reload
+#sudo systemctl restart pigpiod
+
 #libraries
 import time
 import pigpio
@@ -33,10 +45,9 @@ class Motor():
         self.pi.set_servo_pulsewidth(12, 0)
 
 
-#runs this if file is run directly 
 if __name__ == "__main__":
     m = Motor()
-
+    
     try:
         while True:
             m.oscillate(0.01, 10)

@@ -1,4 +1,5 @@
-#this program is an additional program that may be used to control the cam and follower mechanism 
+#this program is an additional program that may be used to control the cam and follower mechanism
+#due to slow speed this program will not be used  
 import RPi.GPIO as GPIO
 from time import sleep
 import sys

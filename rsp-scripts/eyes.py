@@ -24,8 +24,8 @@ class Eyes():
         self.display = display
         self.display.clear() #erase everything at start
         
-        self.pi = pigpio.pi()
-        self.pi.set_pad_strength(0, 14) #equalizing eye brightness
+        # self.pi = pigpio.pi()
+        # self.pi.set_pad_strength(0, 16) #equalizing eye brightness
 
         self.display.bounding_box = (0, 0, width-1, height-1)
 
