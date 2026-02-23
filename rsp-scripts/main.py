@@ -24,7 +24,6 @@ def oscillate(delay, step):
             try:
                 motors.oscillate(delay, step)
             except Exception:
-                motors.stop()
                 break
 
 def record():
@@ -60,7 +59,14 @@ try:
         time.sleep(0.1)
 
 except KeyboardInterrupt:
-    motors.stop()
     killSwitch.set()
+
+    #time for threads to finish their current actions cleanly and prevent error
+    for t in threads:
+        t.join(timeout=0.5)
+    
+    motors.stop()
+    
+    print("\nShutting down Mochigo...")
     exit()
     
