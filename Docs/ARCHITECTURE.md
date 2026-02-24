@@ -70,3 +70,35 @@ http://<raspberry-pi-ip>:8000/micRecording.wav
 ## Notes
 - Ensure both devices are connected to the same local network.
 - Stop the server with `Ctrl + C` when finished.
+
+
+# Speaker Architecture
+
+## Overview
+This document outlines the hardware architecture for the two-way digital audio subsystem of the MochiGo AI robot. The system utilizes the $I^2S$ (Inter-IC Sound) protocol to interface both a digital microphone and a speaker amplifier directly with the core processing unit, bypassing analog conversion to ensure crisp speech recognition and playback.
+
+## Hardware Interface & Wiring
+The audio subsystem utilizes a shared $I^2S$ bus architecture. The Raspberry Pi acts as the Master device, generating the necessary clock signals, while the microphone and amplifier act as Slave devices.
+
+To conserve GPIO pins and simplify routing, the timing signals (Clock and Word Select) are physically spliced to feed both audio devices simultaneously. The data lines remain strictly isolated to prevent input/output collision.
+
+## Software Configuration (Raspberry Pi OS)
+To activate the hardware $I^2S$ pins and load the appropriate device tree overlays for simultaneous input/output, the core system configuration must be modified.
+
+**Target File:** `/boot/firmware/config.txt`
+
+**Required Modifications:**
+1.  Disable default onboard audio routing.
+2.  Enable the $I^2S$ hardware module.
+3.  Apply specific overlays for the amplifier and memory mapping (to ensure microphone recording stability).
+
+```ini
+# Disable default audio
+#dtparam=audio=on
+
+# Enable I2S interface
+dtparam=i2s=on
+
+# Audio Hardware Overlays
+dtoverlay=max98357a
+dtoverlay=i2s-mmap
