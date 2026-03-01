@@ -2,7 +2,7 @@ import requests
 import pygame
 import os
 
-API_KEY = "sk_9deab077f77ba93dd31e186d82fac8016ecbb0f801a63d98" 
+API_KEY = "api" 
 VOICE_ID = "EXAVITQu4vr4xnSDxMaL" 
 
 text_to_say = "Hi this is your favourite mochi"
@@ -53,4 +53,5 @@ def generate_and_play():
         print(f"API Error {response.status_code}: {response.text}")
 
 if __name__ == "__main__":
+
     generate_and_play()
