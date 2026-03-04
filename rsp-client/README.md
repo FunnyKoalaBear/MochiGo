@@ -1,0 +1,1 @@
+This folder will contain code that will allow the Raspberry Pi to connect to our external server to outsource LLM, TTS and SST processing. The server will return the output of the processes.  
