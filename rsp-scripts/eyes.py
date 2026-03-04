@@ -7,7 +7,6 @@ from luma.core.interface.parallel import bitbang_6800
 from luma.core.render import canvas
 from luma.oled.device import ssd1306
 from PIL import Image, ImageDraw
-import pigpio
 import sys
 import time
 
@@ -24,7 +23,6 @@ class Eyes():
         self.display = display
         self.display.clear() #erase everything at start
         
-        # self.pi = pigpio.pi()
         # self.pi.set_pad_strength(0, 16) #equalizing eye brightness
 
         self.display.bounding_box = (0, 0, width-1, height-1)
