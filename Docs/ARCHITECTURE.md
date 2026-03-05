@@ -1,3 +1,33 @@
+# MochiGo System Architecture (Prototype Phase)
+
+## High-Level Overview
+The MochiGo architecture utilizes an Orchestrator Pattern divided into two main nodes communicating over a local Wi-Fi network. 
+1. **The Client (Raspberry Pi / MochiGo Robot):** Acts as a lightweight I/O terminal responsible only for hardware interaction (microphone and speaker).
+2. **The Server (Local Laptop):** Acts as the heavy-computation engine, processing the entire conversational pipeline (Speech-to-Text, LLM generation, Text-to-Speech).
+
+---
+
+## Client-Side Architecture (MochiGo Robot)
+The client-side scripts manage the physical interactions with the user and handle the network requests to the server.
+
+* **`main.py` (Client Orchestrator):** The central hub for the robot. It triggers the listening process, transmits the captured audio file to the server, waits for the processed audio response, and triggers the playback.
+* **`voiceIn.py`:** Handles the input logic. It utilizes Voice Activity Detection (VAD) or a Wake Word engine to detect when the user is speaking, triggers the microphone recording script (`mic.py`), and saves the user's speech as an audio file.
+* **`voiceOut.py`:** Handles the output logic. It receives the final generated audio file from the server and interfaces with the robot's hardware speaker to play the audio back to the user.
+
+---
+
+## Server-Side Architecture (Local Laptop)
+The server-side operates as a sequential pipeline, passing data through various modules to generate a response. 
+
+* **`main.py` (Server Orchestrator):** Hosts the network API to receive data from the robot. Once user audio is received, it pushes the data through the following pipeline:
+  1. **Receive:** Accepts the incoming speech audio file from the robot.
+  2. **STT (Speech-to-Text):** Passes the audio to the STT module and receives a transcribed text string.
+  3. **LLM (Language Model):** Passes the transcribed text as a prompt to the local LLM and receives a generated text response.
+  4. **TTS (Text-to-Speech):** Passes the LLM's text response to the TTS module to generate a new audio file.
+  5. **Send:** Transmits the final TTS audio file back to the robot.
+
+*(Note: In this prototype phase, the pipeline runs sequentially without chunked streaming. The server processes the entire audio response before sending it back to the client.)*
+
 # Hardware Configuration: I2S Microphone & Pigpio Clock Conflict
 
 ## The Issue
