@@ -9,7 +9,7 @@ from datetime import datetime
 
 # Configuration
 MODEL_NAME = "deepseek-v3.1:671b-cloud"
-MEMORY_FILE = "data\human_like_memory.json"
+MEMORY_FILE = "RPi-LLM/data/human_like_memory.json"
 TO_LEARN = "English"
 ALR_LEARNT = "Japanese"
 

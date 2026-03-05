@@ -30,11 +30,6 @@
     "content": "[[SERVO:120]] [[FACE:surprised]] \u308f\u3042\uff01\u3042\u306a\u305f\u306e\u65e5\u672c\u8a9e\u304c\u3068\u3066\u3082\u4e0a\u624b\u3067\u3059\u306d\uff01\"\u5f53\u7136\"\u306f\"of course\"\u3063\u3066\u610f\u5473\u3060\u3088\u306d\u3002\u79c1\u3082\u30e2\u30c1\u661f\u3067\u540c\u3058\u8a00\u8449\u3092\u4f7f\u3063\u3066\u3044\u305f\u3088\uff01\u4eca\u3001\u3075\u3068\u601d\u3044\u51fa\u3057\u305f\u3093\u3060\u3051\u3069\u3001\u30e2\u30c1\u661f\u306b\u306f4\u3064\u306e\u592a\u967d\u304c\u3042\u3063\u305f\u3093\u3060\u3002\u5730\u7403\u306e\u592a\u967d\u306f1\u3064\u3060\u3051\u306a\u306e\u306b\u3073\u3063\u304f\u308a\uff01"
   },
   {
-    "timestamp": 1765519273.0322647,
-    "role": "user",
-    "content": "\u56db\u3064\u306e\u592a\u967d\u306f\u8f9b\u3059\u304e\u306a\u3044\uff1f\uff1f"
-  },
-  {
     "timestamp": 1765519277.6082547,
     "role": "assistant",
     "content": "[[SERVO:90]] [[FACE:happy]] \u3046\u3046\u3093\u3001\u5168\u7136\u8f9b\u304f\u306a\u304b\u3063\u305f\u3088\uff01\u9006\u306b\u697d\u3057\u304b\u3063\u305f\u3093\u3060\u30024\u3064\u306e\u592a\u967d\u306e\u304a\u304b\u3052\u3067\u3001\u30e2\u30c1\u661f\u306f\u3044\u3064\u3082\u660e\u308b\u304f\u3066\u6e29\u304b\u304b\u3063\u305f\u306e\u3002\u3067\u3082\u3001\u6642\u3005\u3068\u3066\u3082\u6691\u304f\u306a\u308b\u304b\u3089\u3001\u307f\u3093\u306a\u3067\u67d3\u6599\u306e\u30d7\u30fc\u30eb\u306b\u98db\u3073\u8fbc\u3093\u3067\u51b7\u3048\u305f\u3088\uff01\"\u8f9b\u3044\"\u306f\"spicy\"\u3084\"hard\"\u306e\u610f\u5473\u3082\u3042\u308b\u3093\u3060\u306d\u3002"
@@ -55,16 +50,6 @@
     "content": "books\u306f\u65e5\u672c\u8a9e\u3067\u4f55\u3068\u3044\u3046"
   },
   {
-    "timestamp": 1765519388.3031664,
-    "role": "assistant",
-    "content": "[[SERVO:60]] [[FACE:happy]] \u3042\uff01\u300cbooks\u300d\u306f\u65e5\u672c\u8a9e\u3067\u300c\u672c\uff08\u307b\u3093\uff09\u300d\u3063\u3066\u8a00\u3046\u3088\uff01\u4f8b\u3048\u3070\u300c\u9762\u767d\u3044\u672c\u300d\u306f\"interesting book\"\u3060\u306d\u3002\u30e2\u30c1\u661f\u3067\u3082\u672c\u304c\u3042\u3063\u305f\u3093\u3060\u3088\u30fc\uff01\u3067\u3082\u30e2\u30c1\u3067\u3067\u304d\u3066\u305f\u304b\u3089\u3001\u8aad\u3093\u3067\u308b\u3068\u304a\u8179\u304c\u7a7a\u3044\u3061\u3083\u3063\u3066\u2026\uff08\u7b11\uff09"
-  },
-  {
-    "timestamp": 1765519437.9717174,
-    "role": "user",
-    "content": "\u4f55\u3060\u305d\u308c\u306f\u7b11\u3046"
-  },
-  {
     "timestamp": 1765519443.5991518,
     "role": "assistant",
     "content": "[[SERVO:90]] [[FACE:embarassed]] \u3048\u3078\u3078\u3001\u672c\u5f53\u306a\u3093\u3060\u3088\uff01\u30e2\u30c1\u661f\u306e\u672c\u306f\u7f8e\u5473\u3057\u3044\u30e2\u30c1\u3067\u3067\u304d\u3066\u3066\u3001\u30da\u30fc\u30b8\u3092\u3081\u304f\u308b\u305f\u3073\u306b\u7518\u3044\u9999\u308a\u304c\u3057\u305f\u306e\u3002\u3067\u3082\u2026\u59b9\u304c\u3044\u3064\u3082\u79c1\u306e\u6559\u79d1\u66f8\u3092\u98df\u3079\u3061\u3083\u3063\u3066\u56f0\u3063\u3066\u305f\u3093\u3060\u3002\"\u7b11\u3046\"\u306f\"to laugh\"\u3060\u3088\u306d\uff01\u4e00\u7dd2\u306b\u7b11\u3044\u306a\u304c\u3089\u65e5\u672c\u8a9e\u52c9\u5f37\u3057\u3088\u3046\u3088\uff01"
@@ -75,11 +60,6 @@
     "content": "\u3068\u306b\u304b\u304f\u3001\u5e30\u308b\u306d"
   },
   {
-    "timestamp": 1765519577.8474615,
-    "role": "assistant",
-    "content": "[[SERVO:120]] [[FACE:sad]] \u3048\u3048\uff1f\u3082\u3046\u5e30\u3063\u3061\u3083\u3046\u306e\uff1f\"\u3068\u306b\u304b\u304f\"\u306f\"anyway\"\u3063\u3066\u610f\u5473\u3060\u3088\u306d\u3002\u307e\u305f\u4eca\u5ea6\u904a\u307c\u3046\u306d\uff01\u30e2\u30c1\u661f\u3067\u3082\u53cb\u9054\u304c\u5e30\u308b\u6642\u306f\u60b2\u3057\u304b\u3063\u305f\u3088\u2026\u6c17\u3092\u3064\u3051\u3066\u5e30\u3063\u3066\u306d\uff01"
-  },
-  {
     "timestamp": 1765520412.653365,
     "role": "user",
     "content": "\u304a\u304a\u3063\u3051"
@@ -88,5 +68,55 @@
     "timestamp": 1765520415.6931124,
     "role": "assistant",
     "content": "[[SERVO:90]] [[FACE:happy]] \u306f\u3044\uff01\"\u304a\u304a\u3063\u3051\"\u306f\u591a\u5206\u300cOK\u300d\u3060\u3088\u306d\uff01\u30e2\u30c1\u661f\u3067\u3082\u300cokee\u300d\u3063\u3066\u8a00\u3063\u3066\u305f\u3088\uff01\u307e\u305f\u4eca\u5ea6\u65e5\u672c\u8a9e\u306e\u30b2\u30fc\u30e0\u3092\u3057\u3088\u3046\u306d\uff01\u30d0\u30a4\u30d0\u30a4\uff01"
+  },
+  {
+    "timestamp": 1772682312.0026898,
+    "role": "user",
+    "content": "hello"
+  },
+  {
+    "timestamp": 1772682314.3486092,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:happy]] \u3042\u3042\u3001\u3053\u3093\u306b\u3061\u306f\uff01\u307e\u305f\u4f1a\u3048\u3066\u5b09\u3057\u3044\u3088\uff01\u5730\u7403\u3067\u306e\u751f\u6d3b\u306f\u3069\u3046\uff1f\"Hello\"\u306f\u65e5\u672c\u8a9e\u3067\"\u3053\u3093\u306b\u3061\u306f\"\u3060\u3088\uff01\u4eca\u65e5\u306f\u4f55\u304b\u65b0\u3057\u3044\u82f1\u8a9e\u3092\u52c9\u5f37\u3057\u305f\u3044\uff1f"
+  },
+  {
+    "timestamp": 1772682320.2581718,
+    "role": "user",
+    "content": "konnichiwa"
+  },
+  {
+    "timestamp": 1772682321.6996088,
+    "role": "assistant",
+    "content": "[[SERVO:60]] [[FACE:happy]] \u307e\u305f\u65e5\u672c\u8a9e\u3067\u8a71\u3057\u3066\u308b\u306d\uff01\"Konnichiwa\" means \"hello\" in English! \u3067\u3082\u82f1\u8a9e\u3067\u8a71\u3059\u7df4\u7fd2\u3092\u3057\u3066\u307f\u3088\u3046\u304b\uff1f\u6700\u8fd1\u5730\u7403\u3067\u4f55\u304b\u9762\u767d\u3044\u3053\u3068\u3042\u3063\u305f\uff1f\"\u9762\u767d\u3044\" means \"interesting\"!"
+  },
+  {
+    "timestamp": 1772682325.5613875,
+    "role": "user",
+    "content": "hiii "
+  },
+  {
+    "timestamp": 1772682326.7478096,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:happy]] Hiii! I see you're saying hi in English now! That's great! \"Hiii\" is like a friendly \"hello\" in English! Let's play a game! Can you tell me one interesting thing about your day using English? "
+  },
+  {
+    "timestamp": 1772682331.5964262,
+    "role": "user",
+    "content": "whats your name "
+  },
+  {
+    "timestamp": 1772682333.895214,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:happy]] My name is MochiGo! \"Name\"\u306f\u65e5\u672c\u8a9e\u3067\u300c\u540d\u524d\u300d\u3060\u3088\uff01Hey, can you introduce yourself in English too? Like, \"My name is...\" It's good practice!"
+  },
+  {
+    "timestamp": 1772682340.461164,
+    "role": "user",
+    "content": "clear"
+  },
+  {
+    "timestamp": 1772682341.5436215,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:confused]] Clear? Okay! I will clear our conversation history and start fresh! \u3067\u3082\u3001\u3061\u3087\u3063\u3068\u5f85\u3063\u3066\uff01Also, \"clear\" can mean \"to make empty\" or \"understand.\" Did you want to start over? Let's begin! Hello! I'm MochiGo!"
   }
 ]
