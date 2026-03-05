@@ -1,9 +1,13 @@
 from eyes import Eyes, display
-from motors import Motor 
 from omniMic import Microphone 
 import time
 import threading 
 
+try:
+    from motors import Motor 
+except:
+    #import this if program is running on Rsp5
+    from motors5 import Motor
 
 #initialising classes 
 eyes = Eyes(display)

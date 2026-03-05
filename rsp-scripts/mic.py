@@ -10,7 +10,7 @@ class Microphone():
         #basic configuration 
         self.sample_rate = 44100
         self.channels = 1
-        self.duration = 2
+        self.duration = 5
 
         sd.default.samplerate = self.sample_rate
         sd.default.channels = self.channels
