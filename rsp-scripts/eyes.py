@@ -56,15 +56,33 @@ class Eyes():
     def blink(self):
         pass
 
+
 #add time out functionality to power down with cleanup()
 
+import signal
+running = True
+
+def handle_exit(sig, frame):
+    global running
+    running = False
+    print("\nSafely finishing current I2C transfer and shutting down...")
 
 #runs this if file is run directly 
 if __name__ == "__main__":
+    serial = i2c(port=1, address=0x3C)
+    width = 128
+    height = 32
+    display = ssd1306(serial, width=width, height=height)
+
     eyes = Eyes(display)
 
-    while True:
+    # Intercept CTRL+C and route it to our handle_exit function
+    signal.signal(signal.SIGINT, handle_exit)
+
+    # The loop will now finish its current cycle before checking 'running' again
+    while running:
         eyes.neutral()
         time.sleep(0.5)
 
-
+    # This only runs AFTER the while loop finishes cleanly
+    eyes.display.cleanup()
