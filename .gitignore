@@ -8,3 +8,7 @@ rsp-server/STT/models/vosk-model-ja-0.22
 
 rsp-scripts/venv
 rsp-scripts/pass.pub
+
+__pycache__/
+*.pyc
+*.pyo
