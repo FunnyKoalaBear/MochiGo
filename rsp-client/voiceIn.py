@@ -19,11 +19,3 @@ class Audio():
         #calls mic.py to record from rsp-script
         #sends recorded file to main.py 
         return self.text
-    
-    
-    def send(self, file):
-        #this function will send audio input to server  
-        pass
-    
-
-

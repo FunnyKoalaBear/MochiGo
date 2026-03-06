@@ -1,32 +1,34 @@
-from fastapi import FastAPI, WebSocket
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse
 import uvicorn #used to start the server 
+
+from ai_pipeline import pipeline
 
 app = FastAPI()
 
 #end point, route decorator 
-#does  GET http://localhost:8000/
-
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
 
-    while True:
-        #recieving data
-        data = await websocket.receive_text()
+    try:
+        while True:
+            
+            #recieving data
+            data = await websocket.receive_text()
+            print(f"Text receieved was {data}")  
 
-        #sending data back 
-        await websocket.send_text(f"Message text was: {data} dayumm")
-        
-        #computing data
-        if data == "die":
-            exit()
-        
-        #printing receieved data
-        print(f"Text receieved was {data}")        
+            #run ai pipeline
+            audioOut = await pipeline("filler")
+            print(audioOut)
 
-        #loop back 
+            #sending data back 
+            await websocket.send_text(audioOut)
+    
+            #loop back 
 
+    except WebSocketDisconnect:
+        print("Server closing.")
 
 
 if __name__ == "__main__":

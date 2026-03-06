@@ -2,38 +2,37 @@
 
 #library imports
 import uvicorn
+import asyncio
 
 #class imports
-from server import websocket_endpoint
 
 
-def run_server():
-    while 1:
-        #receieving audio from client
-        websocket_endpoint()
+async def pipeline(audio: str):
 
-        #sending audio to the STT program
+    #sending audio to the STT program
 
-        #receieving text from STT program
+    #receieving text from STT program
 
-        #sending text query to llm program
+    #sending text query to llm program
 
-        #receiving llm output
+    #receiving llm output
 
-        #sending text output to tts
+    #sending text output to tts
 
-        #recieving tts output mp3 file
+    #recieving tts output mp3 file
 
-        #sending mp3 file to client 
-
-
+    #simulating processing    
+    await asyncio.sleep(1)
+    
+    #sending audio file to server 
+    audioOut = f"I am doing good!"
+    return audioOut
 
 
 if __name__ == "__main__":
     #starting server
     uvicorn.run("server:app", host="127.0.0.1", port=8000)
-    #starting logic 
-    run_server()
+
 
 #Architecture 
 #Recieve speech audio from robot 

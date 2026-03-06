@@ -5,52 +5,56 @@
 # WebSocket → audio
 
 #library imports
-
+import asyncio
 
 #class imports
 from voiceIn import Audio
-from client import sendQuery
+from client import WSClient
+import time
+
 
 audio = Audio()
+wsclient = WSClient("ws://127.0.0.1:8000/ws")
 
 
-#function definitions 
-def recieveAudio():
-    try:
-        userSpeech = audio.record()
-        return userSpeech
-    except:
-        print("Audio could not be recieved")
-        exit()
+async def run_mochigo():
 
-def run_mochigo():
+    #making connection
+    await wsclient.connect()
 
     while 1:
-
         #wait for wake() function to return true
-        audio.wake()
+        await asyncio.to_thread(audio.wake)
+
 
         #recieve audio file from voiceIn.py
         try:
-            voiceInput = audio.record()
+            voiceInput = await asyncio.to_thread(audio.record)
         except:
             print("Could not recieve audio input, restarting loop")
             continue
 
+
         #send audio file to server 
-        sendQuery()
-    
+        await wsclient.send(voiceInput)
+        print("sent")
+
 
         #recieve audio output from server and save it 
+        audioOut = await wsclient.recv()
+        print(f"Output message: {audioOut}")
 
 
-        #play audio output file 
-    
+        #play the audio output file 
+
+
+        #network flush 
+        await asyncio.sleep(0.01)
 
 
 
 if __name__ == "__main__":
-    run_mochigo()
+    asyncio.run(run_mochigo()) 
 
 
 
