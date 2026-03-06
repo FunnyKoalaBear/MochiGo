@@ -2,3 +2,28 @@
 #If the user is speaking this will trigger rsp-scripts to start mic.py in the scripts
 #The output of mic.py will be taken and sent to the main.py 
 
+class Audio():
+    def __init__(self):
+        self.audioFile = "audio.mp4"
+        self.text = "hi how are you doing today"
+
+    def wake(self):
+        #continuous function that checks if user is talking 
+        
+        #simulating it by waiting for input 
+        start = input("Press enter to start talking")
+        print("Wake triggered!")
+
+
+    def record(self):
+        #calls mic.py to record from rsp-script
+        #sends recorded file to main.py 
+        return self.text
+    
+    
+    def send(self, file):
+        #this function will send audio input to server  
+        pass
+    
+
+
