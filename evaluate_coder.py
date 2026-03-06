@@ -17,6 +17,7 @@ The script produces a structured report covering:
   7. Feature breadth   – variety of subsystems touched
 
 Each dimension is scored 0-10. A weighted average produces a final letter grade.
+The report also includes an explicit skill-level classification: Beginner, Intermediate, Advanced, or Expert.
 """
 
 import ast
@@ -455,12 +456,34 @@ GRADE_THRESHOLDS = [
     (4.0, "D"),
 ]
 
+# Skill-level bands (score out of 10 → label, one-line description)
+SKILL_LEVELS: list[tuple[float, str, str]] = [
+    (9.0, "Expert",       "Demonstrates mastery: sophisticated architecture, broad tech coverage, "
+                          "strong code hygiene, and very few rough edges."),
+    (7.5, "Advanced",     "Clearly above intermediate: solid OOP, good error handling, "
+                          "active use of multiple subsystems, and consistent commit discipline."),
+    (5.0, "Intermediate", "Functional, self-directed code with growing structure and some "
+                          "professional habits, but inconsistencies remain in documentation "
+                          "and error handling."),
+    (0.0, "Beginner",     "Early-stage work: code is exploratory, structure is minimal, "
+                          "and professional habits (tests, docs, error handling) are still developing."),
+]
+
 
 def letter_grade(score: float) -> str:
     for threshold, grade in GRADE_THRESHOLDS:
         if score >= threshold:
             return grade
     return "F"
+
+
+def skill_level(score: float) -> tuple[str, str]:
+    """Return (label, description) for the given weighted score."""
+    for threshold, label, description in SKILL_LEVELS:
+        if score >= threshold:
+            return label, description
+    # Fallback – should never reach here due to 0.0 sentinel
+    return "Beginner", SKILL_LEVELS[-1][2]
 
 
 def main():
@@ -502,23 +525,34 @@ def main():
         print()
 
     grade = letter_grade(weighted_sum)
+    level, level_desc = skill_level(weighted_sum)
 
     print(f"{'─'*62}")
     print(f"  Weighted Score : {weighted_sum:.2f} / 10")
     print(f"  Final Grade    : {grade}")
+    print(f"  Skill Level    : {level}")
     print(f"{'='*62}\n")
 
-    # Human-readable verdict
-    if weighted_sum >= 8.0:
-        verdict = "Excellent coder — clean architecture, good habits, impressive feature breadth."
-    elif weighted_sum >= 6.5:
-        verdict = "Solid coder — functional, well-structured code with room to grow."
-    elif weighted_sum >= 5.0:
-        verdict = "Developing coder — shows real capability; more focus on docs and error handling would help."
-    else:
-        verdict = "Early-stage coder — code works but needs more structure, commenting, and error handling."
+    print(f"  {level_desc}\n")
 
-    print(f"  Verdict: {verdict}\n")
+    # Directly answer the "is [author] an intermediate coder?" question
+    if level == "Intermediate":
+        intermediate_answer = (
+            f"  ✅ Yes — {author} scores at the Intermediate level ({weighted_sum:.2f}/10)."
+        )
+    elif level in ("Advanced", "Expert"):
+        intermediate_answer = (
+            f"  🚀 No — {author} scores above Intermediate at the {level} level "
+            f"({weighted_sum:.2f}/10). They have moved beyond intermediate."
+        )
+    else:
+        intermediate_answer = (
+            f"  📈 Not yet — {author} is currently at the Beginner level "
+            f"({weighted_sum:.2f}/10) and is working toward Intermediate."
+        )
+
+    print(intermediate_answer)
+    print()
 
 
 if __name__ == "__main__":
