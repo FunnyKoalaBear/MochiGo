@@ -18,4 +18,5 @@ class Audio():
     def record(self):
         #calls mic.py to record from rsp-script
         #sends recorded file to main.py 
+        self.text = input("Enter your query: ")
         return self.text

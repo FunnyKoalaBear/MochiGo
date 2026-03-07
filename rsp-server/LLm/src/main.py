@@ -9,7 +9,7 @@ from datetime import datetime
 
 # Configuration
 MODEL_NAME = "deepseek-v3.1:671b-cloud"
-MEMORY_FILE = "rsp-server/RPi-LLM/data/human_like_memory.json"
+MEMORY_FILE = "rsp-server/LLm/data/human_like_memory.json"
 TO_LEARN = "English"
 ALR_LEARNT = "Japanese"
 
@@ -229,6 +229,15 @@ def main():
         agent.stop_event.set()
         t.join()
         print("System shutdown.")
+
+
+
+def query(agent, user_text: str):
+    # Just text in, text out. Nice and clean!
+    response = agent.generate_response(user_input=user_text)
+    print(f"AI: {response}")
+    return response
+
 
 if __name__ == "__main__":
     main()

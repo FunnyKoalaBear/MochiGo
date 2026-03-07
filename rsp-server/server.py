@@ -1,8 +1,10 @@
+#this is the main server control program 
+
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse
 import uvicorn #used to start the server 
 
-from ai_pipeline import pipeline
+from ai_pipeline import pipeline, close
 
 app = FastAPI()
 
@@ -16,10 +18,10 @@ async def websocket_endpoint(websocket: WebSocket):
             
             #recieving data
             data = await websocket.receive_text()
-            print(f"Text receieved was {data}")  
+            #print(f"Text receieved was {data}")  
 
             #run ai pipeline
-            audioOut = await pipeline("filler")
+            audioOut = await pipeline(data)
             print(audioOut)
 
             #sending data back 
@@ -27,8 +29,9 @@ async def websocket_endpoint(websocket: WebSocket):
     
             #loop back 
 
-    except WebSocketDisconnect:
+    except WebSocketDisconnect or KeyboardInterrupt:
         print("Server closing.")
+        close()
 
 
 if __name__ == "__main__":

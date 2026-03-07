@@ -1,37 +1,61 @@
-#this is the main server control program 
+#this program generates responses to users audio input
 
 #library imports
-import uvicorn
 import asyncio
+import threading
 
 #class imports
+from LLm.src.test import get_response
+from LLm.src.main import RaspberryAgent, query, main
 
+#setting up LLM
+agent = RaspberryAgent()    
+t = threading.Thread(target=agent.autonomy_loop)
+t.start()
 
 async def pipeline(audio: str):
-
+    
     #sending audio to the STT program
 
     #receieving text from STT program
 
-    #sending text query to llm program
+    #sending & recieving llm program input & output
+    print(f"Query question: {audio}")
 
-    #receiving llm output
+    # print("Test LLM: ")
+    # response = get_response(audio)
+    # print(f"LLM response: {response["content"]}")
+
+    print("Main LLM: ")
+    response = query(agent, audio)
+    print(response)
+
+
 
     #sending text output to tts
 
     #recieving tts output mp3 file
 
-    #simulating processing    
-    await asyncio.sleep(1)
-    
+
+    # #simulating processing    
+    # await asyncio.sleep(1)
+
+
     #sending audio file to server 
-    audioOut = f"I am doing good!"
-    return audioOut
+    #audioOut = f"I am doing good!"
+    return response
+
+
+        
+def close():
+    agent.stop_event.set()
+    t.join()
+    print("System shutdown.")
 
 
 if __name__ == "__main__":
     #starting server
-    uvicorn.run("server:app", host="127.0.0.1", port=8000)
+    asyncio.run(pipeline("I am doing good"))
 
 
 #Architecture 
@@ -42,5 +66,11 @@ if __name__ == "__main__":
 #Recieving LLM output from LLM program
 #Sending text output to TTS program 
 #Sending TTS audio output to mochigo robot using sender program 
+
+
+#future improvements
+#tts streaming
+#llm streaming 
+#stt streaming 
 
 #latency is the biggest problem here, need to work on outputting the llm content continuously 

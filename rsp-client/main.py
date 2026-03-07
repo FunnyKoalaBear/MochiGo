@@ -54,8 +54,10 @@ async def run_mochigo():
 
 
 if __name__ == "__main__":
-    asyncio.run(run_mochigo()) 
-
+    try:
+        asyncio.run(run_mochigo())
+    except KeyboardInterrupt:
+        print("\nShutting down MochiGo...")
 
 
 #Pipeline
