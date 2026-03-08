@@ -6,6 +6,8 @@
 
 #library imports
 import asyncio
+import subprocess
+
 
 #class imports
 from voiceIn import Audio
@@ -14,7 +16,14 @@ import time
 
 
 audio = Audio()
-wsclient = WSClient("ws://127.0.0.1:8000/ws/mochi")
+# wsclient = WSClient("ws://127.0.0.1:8000/ws/mochi")
+wsclient = WSClient("wss://note-d1.tail8b0d7e.ts.net/ws/mochi")
+
+#start tailscale before running program
+#tailscale up in terminal
+subprocess.run("tailscale up")
+
+
 cloudClient = WSClient("")
 
 async def run_mochigo():
@@ -58,6 +67,9 @@ if __name__ == "__main__":
         asyncio.run(run_mochigo())
     except KeyboardInterrupt:
         print("\nShutting down MochiGo...")
+
+        #closing tailscape
+        subprocess.run("tailscale down")
 
 
 #Pipeline

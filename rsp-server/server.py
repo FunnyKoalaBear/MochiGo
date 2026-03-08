@@ -1,11 +1,22 @@
 #this is the main server control program 
 
+#importing libraries
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 import uvicorn #used to start the server 
+import subprocess
 
+#importing classes 
 from ai_pipeline import pipeline, close
 
+#staring server
 app = FastAPI()
+
+#run this line in a seperate terminal to make server public 
+#tailscale serve http://127.0.0.1:8000
+subprocess.run("tailscale down")
+subprocess.run("tailscale up")
+subprocess.run("tailscale --bg serve http://127.0.0.1:8000")
+subprocess.run("tailscale status")
 
 #end point, route decorator 
 @app.websocket("/ws/mochi")
@@ -30,9 +41,10 @@ async def websocket_endpoint(websocket: WebSocket):
 
     except WebSocketDisconnect or KeyboardInterrupt:
         print("Server closing.")
+        subprocess.run("tailscale down")
         close()
 
-@app.websocket("ws/tts")
+@app.websocket("/ws/tts")
 async def ttsAudio(websocket: WebSocket):
     await websocket.accept()
 
@@ -53,7 +65,7 @@ async def ttsAudio(websocket: WebSocket):
 
 if __name__ == "__main__":
     #starting server
-    uvicorn.run("server:app", host="127.0.0.1", port=8000)
+    uvicorn.run("server:app", host="0.0.0.0", port=8000)
 
 
 #run server with
