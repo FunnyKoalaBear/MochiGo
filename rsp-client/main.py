@@ -14,8 +14,8 @@ import time
 
 
 audio = Audio()
-wsclient = WSClient("ws://127.0.0.1:8000/ws")
-
+wsclient = WSClient("ws://127.0.0.1:8000/ws/mochi")
+cloudClient = WSClient("")
 
 async def run_mochigo():
 

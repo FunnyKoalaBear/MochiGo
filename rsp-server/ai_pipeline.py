@@ -31,10 +31,9 @@ async def pipeline(audio: str):
     print(response)
 
 
+    #sending text output to tts and recieving audio 
+    #function()
 
-    #sending text output to tts
-
-    #recieving tts output mp3 file
 
 
     # #simulating processing    

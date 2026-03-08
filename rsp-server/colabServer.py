@@ -8,7 +8,7 @@ from ai_pipeline import pipeline, close
 app = FastAPI()
 
 #end point, route decorator 
-@app.websocket("/ws/mochi")
+@app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
 
@@ -38,16 +38,31 @@ async def ttsAudio(websocket: WebSocket):
 
     try:
         while True:
+
+            #testing 
+            #recieving data
+            data = await websocket.receive_text()
+
+            #sending data back 
+            audioOut = await pipeline(data)
+            await websocket.send_text(audioOut)
+
+
+
+            #actual logic 
             #sending text data to colab computer 
-            pass
+
 
             #recieving tts audio data from colab computer 
 
 
             #sending audio back to ai_pipeline 
     
-    except:
-        pass
+    except WebSocketDisconnect or KeyboardInterrupt:
+        print("Server closing.")
+        close()
+
+
 
 
 
@@ -58,6 +73,3 @@ if __name__ == "__main__":
 
 #run server with
 #fastapi dev testServer.py
-
-#right now the server is using switchbord architecture to communicate and pass data betweeen the 2 clients 
-#when scaling, switch the queue architecture so tasks in the background are continuously working and not causing any blocking 
