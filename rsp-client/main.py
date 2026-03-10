@@ -17,7 +17,7 @@ import time
 
 audio = Audio()
 # wsclient = WSClient("ws://127.0.0.1:8000/ws/mochi")
-wsclient = WSClient("wss://note-d1.tail8b0d7e.ts.net/ws/mochi")
+wsclient = WSClient("ws://note-d1.tail8b0d7e.ts.net:8000/ws/mochi")
 
 #start tailscale before running program
 #tailscale up in terminal

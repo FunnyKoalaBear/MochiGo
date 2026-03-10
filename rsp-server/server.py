@@ -5,6 +5,7 @@ from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 import uvicorn #used to start the server 
 import subprocess
 import time
+import asyncio
 
 #importing classes 
 from ai_pipeline import pipeline, close
@@ -23,13 +24,11 @@ def setup_tailscale():
 
 #switchboard to communicate between the 2 websocket connections 
 class Switchboard():
+    def __init__(self):
+        self.llmOut_queue = asyncio.Queue(10)
+        self.ttsOut_queue = asyncio.Queue(10)
 
-    def __init__(self, ws):
-        self.ws = ws
-
-    def switch():
-        pass
-
+switchboard = Switchboard()
 
 #end point, route decorator 
 #function that manages connection between mochigo client and local server 
@@ -50,16 +49,16 @@ async def websocket_endpoint(websocket: WebSocket):
             llmOut = await pipeline(data)
             print(llmOut)
 
-
             #use switchboard to send data to google colab computer for tts 
-
+            #add to llmOut queue
+            await switchboard.llmOut_queue.put(llmOut)
 
             #recieve speech data from google colab from switchboard 
+            #wait and retrieve from ttsOut queue
+            ttsOut = await switchboard.ttsOut_queue.get()
 
-
-            #send speech data to mochi
-            #need to change llmOut to ttsOut soon 
-            await websocket.send_text(llmOut)
+            #send speech data to mochi 
+            await websocket.send_text(ttsOut)
     
             #loop back 
 
@@ -77,24 +76,25 @@ async def ttsAudio(websocket: WebSocket):
     
     await websocket.accept()
     print("Connection made at /ws/tts")
-    time.sleep(1)
 
     try:
         while True:
 
+            #retrieving llm output from llmOutQueue
+            llmOut = await switchboard.llmOut_queue.get()
+
             #sending llm output to colab server
             print("Going to send")
-            llmOut = "Thats nice to hear, I am glad you had a great day today" 
             await websocket.send_text(llmOut)
 
             #recieving tts audio data from colab computer 
-            dataOut = await websocket.receive_text()
-            print(f"Speech data recieved was: {dataOut}")
+            ttsOut = await websocket.receive_text()
+            print(f"Speech data recieved was: {ttsOut}")
             
-            #switchboard call to send data back to main function
+            #adding tts output to tts queue
+            await switchboard.ttsOut_queue.put(ttsOut)
 
             #loopback
-            time.sleep(1)
 
 
     except (WebSocketDisconnect, KeyboardInterrupt):
