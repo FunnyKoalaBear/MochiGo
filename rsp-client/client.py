@@ -49,15 +49,15 @@ async def run_mochigo():
         print("sent")
 
 
-        #recieve audio output from server and save it 
-        audioOut = await wsclient.recv()
-        print(f"Output message: {audioOut}")
+        #recieve audio output from server and save it as an mp3 file
+        await wsclient.recvAudio()
 
 
         #play the audio output file 
-        
 
-        #network flush 
+
+
+        #network flush and loopback 
         await asyncio.sleep(0.01)
 
 

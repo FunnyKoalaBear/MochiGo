@@ -21,6 +21,11 @@ class WSClient:
     async def recv(self):
         return await self.websocket.recv()
 
+    async def recvAudio(self):
+        ttsOut = await self.websocket.recv()
+
+        with open("rsp-client/Audio_Output/tts_out.mp3", "wb") as f:
+            f.write(ttsOut)
 
     async def sendAudio(self, audio_bytes): 
         #need to convert numpy array into bytes first 

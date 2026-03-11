@@ -30,6 +30,9 @@ class Switchboard():
 
 switchboard = Switchboard()
 
+def sendAudio():
+    pass
+
 #end point, route decorator 
 #function that manages connection between mochigo client and local server 
 @app.websocket("/ws/mochi")
@@ -55,12 +58,12 @@ async def websocket_endpoint(websocket: WebSocket):
 
             #recieve speech data from google colab from switchboard 
             #wait and retrieve from ttsOut queue
-            await switchboard.ttsOut_queue.get()            
+            ttsOut = await switchboard.ttsOut_queue.get()            
             print("Currently in mochi websocket ")
 
 
             #send speech data to mochi 
-            await websocket.send_text("Completed the pipeline!")
+            await websocket.send_bytes(ttsOut)
     
             #loop back 
 
@@ -99,7 +102,7 @@ async def ttsAudio(websocket: WebSocket):
             print("Currently in tts websocket")
 
             #adding tts output to tts queue
-            await switchboard.ttsOut_queue.put("Switch to Mochi queue")
+            await switchboard.ttsOut_queue.put(ttsOut)
 
             #loopback
 
