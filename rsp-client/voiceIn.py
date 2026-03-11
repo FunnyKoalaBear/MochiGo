@@ -20,3 +20,17 @@ class Audio():
         #sends recorded file to main.py 
         self.text = input("Enter your query: ")
         return self.text
+    
+    def recordToWav(self):
+        #open user microphone stream
+
+        #convert recorded bytes to wav file 
+        with open("userVoice.wav", "wb"):
+            pass
+        
+    
+    def recordToBytes(self):
+        #open user microphone stream
+        pass
+
+        #return bytes 
