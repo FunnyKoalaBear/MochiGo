@@ -55,23 +55,18 @@ async def websocket_endpoint(websocket: WebSocket):
 
             #recieve speech data from google colab from switchboard 
             #wait and retrieve from ttsOut queue
-            ttsOut = await switchboard.ttsOut_queue.get()
-            
+            await switchboard.ttsOut_queue.get()            
             print("Currently in mochi websocket ")
 
 
-            with open("rsp-server/TTS/Audio_Output/ttsAudio.wav", "wb") as f:
-                f.write(ttsOut)
-
             #send speech data to mochi 
-            print("Saved file!")
             await websocket.send_text("Completed the pipeline!")
     
             #loop back 
 
     except (WebSocketDisconnect, KeyboardInterrupt):
         print("Server closing.")
-        subprocess.run("tailscale down")
+        #subprocess.run("tailscale down")
         close()
         #exit()
 
@@ -98,13 +93,13 @@ async def ttsAudio(websocket: WebSocket):
             ttsOut = await websocket.receive_bytes()
             print(f"Speech audio recieved!")
 
-            with open("ttsAudio.wav", "wb") as f:
+            with open("rsp-server/TTS/Audio_Output/ttsAudio.mp3", "wb") as f:
                 f.write(ttsOut)
             
-            print("Currently in tts websocket ")
+            print("Currently in tts websocket")
 
             #adding tts output to tts queue
-            await switchboard.ttsOut_queue.put(ttsOut)
+            await switchboard.ttsOut_queue.put("Switch to Mochi queue")
 
             #loopback
 
