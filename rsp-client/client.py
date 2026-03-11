@@ -7,12 +7,16 @@
 #library imports
 import asyncio
 import subprocess
+import sys, os 
 
 
 #class imports
 from voiceIn import Audio
 from clientDetails import WSClient
 import time
+from audio import record, playback
+sys.path.append(os.path.abspath("../rsp-server/STT"))
+from src.mp3STT import load, call
 
 
 audio = Audio()
@@ -25,6 +29,7 @@ subprocess.run("tailscale up")
 
 
 cloudClient = WSClient("")
+file = "rsp-client/Audio_Output/tts_out.mp3"
 
 async def run_mochigo():
 
@@ -37,11 +42,15 @@ async def run_mochigo():
 
 
         #recieve audio file from voiceIn.py
-        try:
-            voiceInput = await asyncio.to_thread(audio.record)
-        except:
-            print("Could not recieve audio input, restarting loop")
-            continue
+        # try:
+        #     voiceInput = await asyncio.to_thread(audio.record)
+        # except:
+        #     print("Could not recieve audio input, restarting loop")
+        #     continue
+        record()
+
+        #STT on audio file 
+        voiceInput = "STT Output"
 
 
         #send audio file to server 
@@ -54,7 +63,7 @@ async def run_mochigo():
 
 
         #play the audio output file 
-
+        playback()
 
 
         #network flush and loopback 
@@ -64,6 +73,7 @@ async def run_mochigo():
 
 if __name__ == "__main__":
     try:
+        model = load()
         asyncio.run(run_mochigo())
     except KeyboardInterrupt:
         print("\nShutting down MochiGo...")

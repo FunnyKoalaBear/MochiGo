@@ -23,7 +23,7 @@ class Audio():
     
     def recordToWav(self):
         #open user microphone stream
-
+        
         #convert recorded bytes to wav file 
         with open("userVoice.wav", "wb"):
             pass
