@@ -78,6 +78,8 @@ def call(AUDIO_FILE, model):
     print(f"Time taken: {end - start:.6f} seconds")
     wf.close()
 
+    return final_result['text']
+
 
 
 if __name__ == "__main__":

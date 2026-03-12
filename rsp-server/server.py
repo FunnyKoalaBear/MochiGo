@@ -30,8 +30,9 @@ class Switchboard():
 
 switchboard = Switchboard()
 
-def sendAudio():
-    pass
+file = "rsp-client/Audio_Output/tts_out.wav"
+fileIn = "rsp-server/STt/data/user_query.wav"
+
 
 #end point, route decorator 
 #function that manages connection between mochigo client and local server 
@@ -45,11 +46,11 @@ async def websocket_endpoint(websocket: WebSocket):
         while True:
             
             #recieving data
-            data = await websocket.receive_text()
-            #print(f"Text receieved was {data}")  
+            wavBytes = await websocket.receive_bytes()
+
 
             #run ai pipeline
-            llmOut = await pipeline(data)
+            llmOut = await pipeline(wavBytes)
             print(llmOut)
 
             #use switchboard to send data to google colab computer for tts 
@@ -107,11 +108,15 @@ async def ttsAudio(websocket: WebSocket):
             #loopback
 
 
-    except (WebSocketDisconnect, KeyboardInterrupt):
-        print("Server closing.")
-        subprocess.run("tailscale down")
-        close()
-        exit()
+    except Exception as e:
+        print("PIPELINE ERROR:", e)
+
+    # except (WebSocketDisconnect, KeyboardInterrupt):
+    #     print("Server closing.")
+    #     subprocess.run("tailscale down")
+    #     close()
+    #     exit()
+        
 
 
 
@@ -126,3 +131,28 @@ if __name__ == "__main__":
 
 #right now the server is using switchbord architecture to communicate and pass data betweeen the 2 clients 
 #when scaling, switch the queue architecture so tasks in the background are continuously working and not causing any blocking 
+
+
+#Architecture 
+#Start websocket connection between mochigo and local server
+#Start websocket connection between local server and google colab server
+#Recieve speech audio from robot 
+#sending audio file to STT program 
+#recieving text from STT program
+#sending text to query to LLM program
+#Recieving LLM output from LLM program
+#Send LLM Text output to server
+#Server sends LLM Text output back to local server
+#Local server sends LLM Text Output to Google Colab Server for TTS
+#TTS program in Google Colab Server produces wav file
+#Wav file is compressed to mp3 file 
+#Google Colab Server sends mochigo response audio back to local server through websocket
+#Local server forwards recieved audio to mochigo through websocket
+
+
+#future improvements
+#tts streaming
+#llm streaming 
+#stt streaming 
+
+#latency is the biggest problem here, need to work on outputting the llm content continuously 

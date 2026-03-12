@@ -23,7 +23,8 @@ class WSClient:
 
     async def recvAudio(self):
         ttsOut = await self.websocket.recv()
-
+        print("Recieved audio and writing mp3 file")
+        
         with open("rsp-client/Audio_Output/tts_out.mp3", "wb") as f:
             f.write(ttsOut)
 

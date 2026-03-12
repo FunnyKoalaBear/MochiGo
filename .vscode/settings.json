@@ -5,4 +5,8 @@
         "**/*.rpymc": true,
         "**/cache/": true
     }
+
+    "python.analysis.extraPaths": [
+        "./rsp-server/STT"
+    ]
 }

@@ -14,9 +14,7 @@ import sys, os
 from voiceIn import Audio
 from clientDetails import WSClient
 import time
-from audio import record, playback
-sys.path.append(os.path.abspath("../rsp-server/STT"))
-from src.mp3STT import load, call
+from audio import recordWav, playback
 
 
 audio = Audio()
@@ -29,7 +27,9 @@ subprocess.run("tailscale up")
 
 
 cloudClient = WSClient("")
-file = "rsp-client/Audio_Output/tts_out.mp3"
+wavFile = "rsp-client/Audio_Output/tts_in.wav"
+mp3File = "rsp-client/Audio_Output/tts_out.mp3"
+
 
 async def run_mochigo():
 
@@ -37,34 +37,35 @@ async def run_mochigo():
     await wsclient.connect()
 
     while 1:
+        #This is done by running running local vosk model
         #wait for wake() function to return true
-        await asyncio.to_thread(audio.wake)
+        #await asyncio.to_thread(audio.wake)
 
-
+        #text input
         #recieve audio file from voiceIn.py
         # try:
         #     voiceInput = await asyncio.to_thread(audio.record)
         # except:
         #     print("Could not recieve audio input, restarting loop")
         #     continue
-        record()
+        
+        #record user input
+        recordWav(wavFile)
 
-        #STT on audio file 
-        voiceInput = "STT Output"
+        #send user voice to server for TTS
+        with open(wavFile, "rb") as f:
+            wav_bytes = f.read()
 
-
-        #send audio file to server 
-        await wsclient.send(voiceInput)
+        #send audio file to server for SST -> LLM -> TTS
+        await wsclient.send(wav_bytes)
         print("sent")
 
 
-        #recieve audio output from server and save it as an mp3 file
+        #recieve audio output from server and build it as an mp3 file
         await wsclient.recvAudio()
 
-
         #play the audio output file 
-        playback()
-
+        #playback(mp3File)
 
         #network flush and loopback 
         await asyncio.sleep(0.01)
@@ -73,7 +74,6 @@ async def run_mochigo():
 
 if __name__ == "__main__":
     try:
-        model = load()
         asyncio.run(run_mochigo())
     except KeyboardInterrupt:
         print("\nShutting down MochiGo...")
