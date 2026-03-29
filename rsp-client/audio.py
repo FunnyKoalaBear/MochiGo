@@ -58,7 +58,7 @@ async def recordMp3(filename, fs=44100):
 
 
 
-def recordWav(filename, fs=44100):
+async def recordWav(filename, fs=44100):
     recorded_chunks = []
 
     # 1. Define a callback to grab audio data as it arrives
@@ -101,7 +101,7 @@ def recordWav(filename, fs=44100):
 
 
 #function to playback audio
-async def playback(file):
+def playback(file):
     
     #decode mp3 file    
     audioFile = miniaudio.decode_file(file)

@@ -348,5 +348,15 @@
     "timestamp": 1774778289.772753,
     "role": "assistant",
     "content": "[[SERVO:90]] [[FACE:happy]] My favorite song is \"Rolling Rolling\"! \"Song\" means \u6b4c (\u3046\u305f)! On Mochi Planet, we would sing it while rolling on the hills. The words are simple: \"Rolling, rolling, under the suns four!\" What is your favorite song? Maybe we can learn its name in English together?"
+  },
+  {
+    "timestamp": 1774779121.7814474,
+    "role": "user",
+    "content": "hello one two three what's your name"
+  },
+  {
+    "timestamp": 1774779127.0962577,
+    "role": "assistant",
+    "content": "[[SERVO:60]] [[FACE:surprised]] Oh! You remembered our counting lesson! \"One, two, three\" is \u4e00\u3001\u4e8c\u3001\u4e09! And then you asked my name! My name is MochiGo! \"Name\" is \u540d\u524d (\u306a\u307e\u3048). What is your name? Can you tell me in English?"
   }
 ]
