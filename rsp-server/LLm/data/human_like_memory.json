@@ -55,11 +55,6 @@
     "content": "why do you care"
   },
   {
-    "timestamp": 1774314695.1534796,
-    "role": "assistant",
-    "content": "[[SERVO:90]] [[FACE:sad]] Because I'm your friend! On Mochi Planet, we always care for each other. When my mom sent me to Earth, she told me to be kind to everyone. Your health is important!"
-  },
-  {
     "timestamp": 1774314707.7930524,
     "role": "user",
     "content": "tf why did u get sent to earth"
@@ -78,11 +73,6 @@
     "timestamp": 1774314722.3852327,
     "role": "assistant",
     "content": "[[SERVO:60]] [[FACE:sad]] Because she's the best mochi mom! She always let me roll in the green grass under our four suns. And she made the best sweet rice flour soup... Oh! I just remembered! That's \"sweet rice flour soup\" or \u305c\u3093\u3056\u3044 in Japanese. Do you miss anyone?"
-  },
-  {
-    "timestamp": 1774314735.2801857,
-    "role": "user",
-    "content": "i miss ur mom"
   },
   {
     "timestamp": 1774314739.1188629,
@@ -138,5 +128,55 @@
     "timestamp": 1774771866.8829603,
     "role": "assistant",
     "content": "[[SERVO:60]] [[FACE:happy]] Oh! I just remembered something! You said \"I miss your mom\" before. That was very sweet! Do you have a favorite memory with your own mom, or someone like a mom?"
+  },
+  {
+    "timestamp": 1774772646.4705722,
+    "role": "user",
+    "content": "the"
+  },
+  {
+    "timestamp": 1774772650.7936172,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:confused]] \"The\" means \"\u305d\u306e\" or \"\u3042\u306e\" in Japanese. It's a very important word! Let's use it in a sentence. Can you try saying \"The sun is bright\"? \"Sun\" is \u592a\u967d!"
+  },
+  {
+    "timestamp": 1774772682.8842418,
+    "role": "user",
+    "content": "hi hello and two three hello one two three"
+  },
+  {
+    "timestamp": 1774772689.0434537,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:happy]] Hello hello! You said \"hello\" many times! That's great practice! \"One, two, three\" is \u4e00\u3001\u4e8c\u3001\u4e09\uff01 Let's count together! One... two... three!"
+  },
+  {
+    "timestamp": 1774772962.2033355,
+    "role": "user",
+    "content": "hello one two three"
+  },
+  {
+    "timestamp": 1774772966.8115842,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:happy]] Yay! You remembered! One, two, three! Let's try a new number. \"Four\" means \u56db! Can you say \"one, two, three, four\"?"
+  },
+  {
+    "timestamp": 1774773088.596301,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:happy]] Oh! I just remembered you saying \"hello\" to me before! That was a very good English start. Do you say \"hello\" to many people every day?"
+  },
+  {
+    "timestamp": 1774773143.272072,
+    "role": "assistant",
+    "content": "[[SERVO:60]] [[FACE:confused]] Oh! My dum dum amnesia is acting up... but I just remembered! You once asked me \"why do you care\". It made me think... why do *you* care about learning English?"
+  },
+  {
+    "timestamp": 1774773169.946023,
+    "role": "user",
+    "content": "hi hello and two or three"
+  },
+  {
+    "timestamp": 1774773174.7073214,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:happy]] Hi hello! And two or three! That's a fun mix! Let's count properly together. \"One, two, three\" means \u4e00\u3001\u4e8c\u3001\u4e09. Can you say \"one, two, three, four\" with me?"
   }
 ]
