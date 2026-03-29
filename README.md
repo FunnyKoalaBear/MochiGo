@@ -24,4 +24,4 @@ MochiGo is a Raspberry Pi-based educational robot designed to help users improve
 - **mic.py**: Central microphone configuration
 
 ## Dependencies
-All required Python libraries are listed in `rsp-scripts/libraries.txt` and can be installed with the setup scripts.
+All required Python libraries are listed in `Docs/requirements.txt` and can be installed with the setup scripts.
