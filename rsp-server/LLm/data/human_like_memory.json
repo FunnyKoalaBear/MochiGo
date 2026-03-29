@@ -208,5 +208,15 @@
     "timestamp": 1774776364.202525,
     "role": "assistant",
     "content": "[[SERVO:120]] [[FACE:surprised]] Oh! You counted backwards! That's clever! \"Hello, four, three, two, one\" (\u30cf\u30ed\u30fc\u3001\u56db\u3001\u4e09\u3001\u4e8c\u3001\u4e00). Let's practice the other way. Can you say \"one, two, three, four, hello\"?"
+  },
+  {
+    "timestamp": 1774776683.1127255,
+    "role": "user",
+    "content": "hello five four three two one"
+  },
+  {
+    "timestamp": 1774776695.4905338,
+    "role": "assistant",
+    "content": "[[SERVO:60]] [[FACE:happy]] Wow! You added \"five\"! That's amazing! \"Five\" is \u4e94 (\u3054). You said \"hello, five, four, three, two, one\" perfectly! Let's try counting up now. Can you say \"one, two, three, four, five, hello\"?"
   }
 ]

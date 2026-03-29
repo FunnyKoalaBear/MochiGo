@@ -104,7 +104,7 @@ def recordWav(filename, fs=44100):
 def playback(file):
     
     #decode mp3 file    
-    audioFile = miniaudio.file.decode_file()
+    audioFile = miniaudio.decode_file()
     channels = audioFile.nchannels
     audioFile.samples = np.array(audioFile.samples)
 
