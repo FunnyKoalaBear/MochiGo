@@ -63,8 +63,15 @@ async def run_mochigo():
         #recieve audio output from server and build it as an mp3 file
         await wsclient.recvAudio()
 
-        #play the audio output file 
-        await asyncio.to_thread(playback, mp3File)
+        #play the audio output file
+        #await asyncio.to_thread(playback, mp3File)
+
+	#play the audio file through BlueTooth
+	############################################################################
+        print("Playing file though connected bluetooth device")
+        process = await asyncio.create_subprocess_exec("paplay", mp3File)
+        await process.wait()
+	############################################################################
 
         #network flush and loopback 
         await asyncio.sleep(0.01)

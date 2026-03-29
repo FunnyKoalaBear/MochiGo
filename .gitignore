@@ -14,3 +14,19 @@ rsp-server/TTS/.env
 
 rsp-server\TTS\mochitts.ipynb
 rsp-server/TTS/mochitts.ipynb
+
+
+
+# Virtual Environments
+my_venv/
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Audio/Media files
+*.wav
+*.mp3
+
+# Personal Scripts
+*.sh
