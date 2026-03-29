@@ -13,7 +13,7 @@ import subprocess
 from voiceIn import Audio
 from clientDetails import WSClient
 import time
-from audio import recordWav
+from audio import recordWav, playback
 
 
 audio = Audio()
@@ -64,7 +64,7 @@ async def run_mochigo():
         await wsclient.recvAudio()
 
         #play the audio output file 
-        #playback(mp3File)
+        playback(mp3File)
 
         #network flush and loopback 
         await asyncio.sleep(0.01)

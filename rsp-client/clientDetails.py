@@ -27,6 +27,8 @@ class WSClient:
         
         with open("Audio_Output/tts_out.mp3", "wb") as f:
             f.write(ttsOut)
+        
+        print("Saved audio to Audio_Output/tts_out.mp3 ")
 
     async def sendAudio(self, audio_bytes): 
         #need to convert numpy array into bytes first 

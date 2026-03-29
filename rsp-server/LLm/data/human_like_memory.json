@@ -178,5 +178,25 @@
     "timestamp": 1774773174.7073214,
     "role": "assistant",
     "content": "[[SERVO:90]] [[FACE:happy]] Hi hello! And two or three! That's a fun mix! Let's count properly together. \"One, two, three\" means \u4e00\u3001\u4e8c\u3001\u4e09. Can you say \"one, two, three, four\" with me?"
+  },
+  {
+    "timestamp": 1774773415.495155,
+    "role": "user",
+    "content": "hello one two three four"
+  },
+  {
+    "timestamp": 1774773419.2525856,
+    "role": "assistant",
+    "content": "[[SERVO:120]] [[FACE:happy]] Excellent! You said \"four\"! That was perfect! Let's keep going. The next number is \"five\" (\u4e94\u3001\u3054). Can you try saying \"one, two, three, four, five\"?"
+  },
+  {
+    "timestamp": 1774775709.5594218,
+    "role": "user",
+    "content": "hello one two three hello"
+  },
+  {
+    "timestamp": 1774775722.3929274,
+    "role": "assistant",
+    "content": "[[SERVO:60]] [[FACE:confused]] Oh! You said \"hello\" again in the middle! That's a funny way to count! Let's try again. \"One, two, three, four, five\" (\u4e00\u3001\u4e8c\u3001\u4e09\u3001\u56db\u3001\u4e94). Can you say it with me?"
   }
 ]
