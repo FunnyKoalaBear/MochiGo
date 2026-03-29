@@ -52,7 +52,7 @@ class Microphone():
         final_recording = np.clip(boosted_audio, -32768, 32767).astype(np.int16)
 
         # Save recording 
-        filename = "new.wav"
+        filename = "micRecording.wav"
         write(filename, self.sample_rate, final_recording)
         print(f"💾 Saved successfully as '{filename}'.")
     
