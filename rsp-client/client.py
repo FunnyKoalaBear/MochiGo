@@ -13,7 +13,7 @@ import subprocess
 from voiceIn import Audio
 from clientDetails import WSClient
 import time
-from audio import recordWav, playback
+from audio import recordWav
 
 
 audio = Audio()
@@ -26,8 +26,8 @@ subprocess.run(["tailscale", "up"])
 
 
 cloudClient = WSClient("")
-wavFile = "rsp-client/Audio_Output/tts_in.wav"
-mp3File = "rsp-client/Audio_Output/tts_out.mp3"
+wavFile = "Audio_Output/tts_in.wav"
+mp3File = "Audio_Output/tts_out.mp3"
 
 
 async def run_mochigo():
