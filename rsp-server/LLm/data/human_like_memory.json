@@ -40,19 +40,9 @@
     "content": "[[SERVO:90]] [[FACE:happy]] Wonderful! You said \"Hello\" perfectly! Let's learn another word now. \"Goodbye\" means \u3055\u3088\u3046\u306a\u3089. Can you try saying \"Goodbye\"?"
   },
   {
-    "timestamp": 1774314671.4862485,
-    "role": "user",
-    "content": "i have meningitis"
-  },
-  {
     "timestamp": 1774314680.895808,
     "role": "assistant",
     "content": "[[SERVO:90]] [[FACE:surprised]] Oh no! Meningitis is very serious! That means \u9ac4\u819c\u708e in Japanese. Please go see a doctor right away! Your health is most important!"
-  },
-  {
-    "timestamp": 1774314692.6357388,
-    "role": "user",
-    "content": "why do you care"
   },
   {
     "timestamp": 1774314707.7930524,
@@ -198,5 +188,25 @@
     "timestamp": 1774775722.3929274,
     "role": "assistant",
     "content": "[[SERVO:60]] [[FACE:confused]] Oh! You said \"hello\" again in the middle! That's a funny way to count! Let's try again. \"One, two, three, four, five\" (\u4e00\u3001\u4e8c\u3001\u4e09\u3001\u56db\u3001\u4e94). Can you say it with me?"
+  },
+  {
+    "timestamp": 1774776049.3104625,
+    "role": "user",
+    "content": "hi two three four"
+  },
+  {
+    "timestamp": 1774776053.3172219,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:confused]] You forgot \"one\"! Let's start from the beginning. \"One\" is \u4e00 (\u3044\u3061). So, \"one, two, three, four\". Can you try saying that with me?"
+  },
+  {
+    "timestamp": 1774776360.002519,
+    "role": "user",
+    "content": "hello four three two one"
+  },
+  {
+    "timestamp": 1774776364.202525,
+    "role": "assistant",
+    "content": "[[SERVO:120]] [[FACE:surprised]] Oh! You counted backwards! That's clever! \"Hello, four, three, two, one\" (\u30cf\u30ed\u30fc\u3001\u56db\u3001\u4e09\u3001\u4e8c\u3001\u4e00). Let's practice the other way. Can you say \"one, two, three, four, hello\"?"
   }
 ]

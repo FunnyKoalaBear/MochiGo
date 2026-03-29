@@ -11,6 +11,7 @@ fileMp3 = "rsp-client/Audio_Output/tts_out.mp3"
 fileWav = "rsp-client/Audio_Output/tts_in.wav"
 #configuration
 
+import miniaudio
 
 #function to record audio
 def recordMp3(filename, fs=44100):
@@ -103,7 +104,7 @@ def recordWav(filename, fs=44100):
 def playback(file):
     
     #decode mp3 file    
-    audioFile = file.decode_file()
+    audioFile = miniaudio.file.decode_file()
     channels = audioFile.nchannels
     audioFile.samples = np.array(audioFile.samples)
 
