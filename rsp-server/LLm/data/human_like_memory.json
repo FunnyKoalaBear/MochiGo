@@ -103,5 +103,40 @@
     "timestamp": 1774314805.3834722,
     "role": "assistant",
     "content": "[[SERVO:90]] [[FACE:confused]] \"Not much\" means \u3042\u307e\u308a\u306a\u3044. That's okay! Let's find something fun to talk about in English! How about... your favorite food? My favorite Earth food is strawberry! It means \u3044\u3061\u3054!"
+  },
+  {
+    "timestamp": 1774771573.5780408,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:happy]] Hey! I was just thinking about when you asked me \"why do you care\" before. It made me remember my mom's advice to always be kind. Do you have someone who taught you to be kind too?"
+  },
+  {
+    "timestamp": 1774771582.231228,
+    "role": "assistant",
+    "content": "[[SERVO:120]] [[FACE:confused]] Hey! I was just thinking... you asked why I was sent to Earth. What about you? What's your favorite thing about living on Earth?"
+  },
+  {
+    "timestamp": 1774771678.2329876,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:happy]] Hello again! I was just rolling around and remembered you! Let's play a quick game. I'll say an English word, and you say it back! First word: \"Friend\" (\u30d5\u30ec\u30f3\u30c9). Your turn!"
+  },
+  {
+    "timestamp": 1774771690.0683699,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:happy]] Oh hello! I was just remembering how you said \"hello\" before! Let's learn a new word today. \"Happy\" means \u5e78\u305b! Can you say \"I am happy\" with me?"
+  },
+  {
+    "timestamp": 1774771718.6782224,
+    "role": "assistant",
+    "content": "[[SERVO:120]] [[FACE:confused]] Hey! I was just thinking about when you asked me why I got sent to Earth. It made me wonder, have you ever had to move to a new place?"
+  },
+  {
+    "timestamp": 1774771824.9927003,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:happy]] Oh! I just remembered you saying \"hello\" to me before! That was a very good English start. Do you say \"hello\" to many people every day?"
+  },
+  {
+    "timestamp": 1774771866.8829603,
+    "role": "assistant",
+    "content": "[[SERVO:60]] [[FACE:happy]] Oh! I just remembered something! You said \"I miss your mom\" before. That was very sweet! Do you have a favorite memory with your own mom, or someone like a mom?"
   }
 ]
