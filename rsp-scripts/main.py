@@ -1,4 +1,4 @@
-from eyes import Eyes, display
+from eyes_v2 import Eyes, display
 from omniMic import Microphone 
 import time
 import threading 
