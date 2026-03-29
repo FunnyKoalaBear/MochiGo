@@ -7,7 +7,6 @@
 #library imports
 import asyncio
 import subprocess
-import sys, os 
 
 
 #class imports
@@ -23,7 +22,7 @@ wsclient = WSClient("ws://note-d1.tail8b0d7e.ts.net:8000/ws/mochi")
 
 #start tailscale before running program
 #tailscale up in terminal
-subprocess.run("tailscale up")
+subprocess.run(["tailscale", "up"])
 
 
 cloudClient = WSClient("")
