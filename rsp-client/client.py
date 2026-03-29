@@ -49,7 +49,7 @@ async def run_mochigo():
         #     continue
         
         #record user input
-        recordWav(wavFile)
+        await recordWav(wavFile)
 
         #send user voice to server for TTS
         with open(wavFile, "rb") as f:
@@ -64,7 +64,7 @@ async def run_mochigo():
         await wsclient.recvAudio()
 
         #play the audio output file 
-        playback(mp3File)
+        await asyncio.to_thread(playback, mp3File)
 
         #network flush and loopback 
         await asyncio.sleep(0.01)

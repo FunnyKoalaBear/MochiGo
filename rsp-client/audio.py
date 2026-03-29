@@ -14,7 +14,7 @@ fileWav = "rsp-client/Audio_Output/tts_in.wav"
 import miniaudio
 
 #function to record audio
-def recordMp3(filename, fs=44100):
+async def recordMp3(filename, fs=44100):
     recorded_chunks = []
 
     # 1. Define a callback to grab audio data as it arrives
@@ -23,11 +23,11 @@ def recordMp3(filename, fs=44100):
             print(f"Audio Status Warning: {status}") # Helps debug buffer overruns
         recorded_chunks.append(indata.copy())
 
-    input("Press Enter to START recording...")
+    await asyncio.to_thread(input, "Press Enter to START recording...")
 
     # 2. Start the stream - EXPLICITLY set dtype to float32
     with sd.InputStream(samplerate=fs, channels=1, dtype='float32', callback=callback):
-        input("RECORDING... Press Enter to STOP.")
+        await asyncio.to_thread(input, "RECORDING... Press Enter to STOP.")
 
     # 3. Process the recorded data
     if not recorded_chunks:
@@ -101,10 +101,10 @@ def recordWav(filename, fs=44100):
 
 
 #function to playback audio
-def playback(file):
+async def playback(file):
     
     #decode mp3 file    
-    audioFile = miniaudio.decode_file()
+    audioFile = miniaudio.decode_file(file)
     channels = audioFile.nchannels
     audioFile.samples = np.array(audioFile.samples)
 

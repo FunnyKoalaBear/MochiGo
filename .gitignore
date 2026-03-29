@@ -10,3 +10,7 @@ rsp-scripts/venv
 rsp-scripts/pass.pub
 
 rsp-server/TTS/.env
+
+
+rsp-server\TTS\mochitts.ipynb
+rsp-server/TTS/mochitts.ipynb

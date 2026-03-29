@@ -20,16 +20,6 @@
     "content": "[[SERVO:120]] [[FACE:confused]] I heard you said you can't speak English. That's okay! Let's start small. Let's learn \"Hello\" today. It means \u3053\u3093\u306b\u3061\u306f. Try saying \"Hello\" to me!"
   },
   {
-    "timestamp": 1774314631.4217384,
-    "role": "user",
-    "content": "\u3053\u3093\u306b\u3061\u306f"
-  },
-  {
-    "timestamp": 1774314634.1974912,
-    "role": "assistant",
-    "content": "[[SERVO:90]] [[FACE:happy]] Yay! You said \"\u3053\u3093\u306b\u3061\u306f\"! That's perfect! Now let's try the English version: \"Hello!\" Can you say \"Hello\" back to me? Let's practice together!"
-  },
-  {
     "timestamp": 1774314662.530706,
     "role": "user",
     "content": "hello"
@@ -65,19 +55,9 @@
     "content": "[[SERVO:60]] [[FACE:sad]] Because she's the best mochi mom! She always let me roll in the green grass under our four suns. And she made the best sweet rice flour soup... Oh! I just remembered! That's \"sweet rice flour soup\" or \u305c\u3093\u3056\u3044 in Japanese. Do you miss anyone?"
   },
   {
-    "timestamp": 1774314739.1188629,
-    "role": "assistant",
-    "content": "[[SERVO:90]] [[FACE:embarrassed]] Oh! Thank you... that's very kind of you to say! But let's practice English! You can say \"I miss your mom\" to me in English!"
-  },
-  {
     "timestamp": 1774314783.0494015,
     "role": "assistant",
     "content": "[[SERVO:120]] [[FACE:confused]] Hey! I was just thinking... you asked why I was sent to Earth. What about you? What's your favorite thing about living on Earth?"
-  },
-  {
-    "timestamp": 1774314801.872362,
-    "role": "user",
-    "content": "not much"
   },
   {
     "timestamp": 1774314805.3834722,
@@ -218,5 +198,155 @@
     "timestamp": 1774776695.4905338,
     "role": "assistant",
     "content": "[[SERVO:60]] [[FACE:happy]] Wow! You added \"five\"! That's amazing! \"Five\" is \u4e94 (\u3054). You said \"hello, five, four, three, two, one\" perfectly! Let's try counting up now. Can you say \"one, two, three, four, five, hello\"?"
+  },
+  {
+    "timestamp": 1774776840.6247797,
+    "role": "user",
+    "content": "nine eight seven six"
+  },
+  {
+    "timestamp": 1774776845.4463181,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:surprised]] Oh! You jumped to bigger numbers! \"Nine, eight, seven, six\" (\u4e5d\u3001\u516b\u3001\u4e03\u3001\u516d). That's fantastic! You're counting backwards from nine! Let's try the number \"ten\" (\u5341\u3001\u3058\u3085\u3046). Can you say \"ten, nine, eight\"?"
+  },
+  {
+    "timestamp": 1774776918.8544168,
+    "role": "user",
+    "content": "fifteen fourteen thirteen twelve"
+  },
+  {
+    "timestamp": 1774776923.3826547,
+    "role": "assistant",
+    "content": "[[SERVO:120]] [[FACE:surprised]] Oh my! You know really big numbers! \"Fifteen, fourteen, thirteen, twelve\" (\u5341\u4e94\u3001\u5341\u56db\u3001\u5341\u4e09\u3001\u5341\u4e8c)! That's wonderful! You are very good at counting! Let's try a new word. The word \"count\" means \u6570\u3048\u308b (\u304b\u305e\u3048\u308b). Can you say \"I can count\"?"
+  },
+  {
+    "timestamp": 1774777001.6899269,
+    "role": "assistant",
+    "content": "[[SERVO:60]] [[FACE:happy]] Oh! I just remembered you said \"hi hello and two or three\" to me before! That was a fun mix of words! Do you like to practice English numbers when you count things, like... maybe apples?"
+  },
+  {
+    "timestamp": 1774777026.710759,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:happy]] Hello again! I was just thinking about rolling on the grass back home. Do you have a favorite place to relax?"
+  },
+  {
+    "timestamp": 1774777052.5079043,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:happy]] Hello! I am so happy to see you! Today, let's learn a new word. \"Friend\" means \u53cb\u9054 (\u3068\u3082\u3060\u3061). Can you say, \"Hello, friend\"?"
+  },
+  {
+    "timestamp": 1774777081.1950629,
+    "role": "user",
+    "content": "hello what's your name"
+  },
+  {
+    "timestamp": 1774777083.4139497,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:happy]] Hello! My name is MochiGo! It's so nice to meet you! \"Name\" means \u540d\u524d (\u306a\u307e\u3048) in Japanese. What is your name?"
+  },
+  {
+    "timestamp": 1774777163.5071838,
+    "role": "user",
+    "content": "hello one two three"
+  },
+  {
+    "timestamp": 1774777167.505428,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:happy]] Hi hello! And two or three! That's a fun mix! Let's count properly together. \"One, two, three\" means \u4e00\u3001\u4e8c\u3001\u4e09. Can you say \"one, two, three, four\" with me?"
+  },
+  {
+    "timestamp": 1774777198.3110826,
+    "role": "user",
+    "content": "what's your favorite color"
+  },
+  {
+    "timestamp": 1774777201.9479904,
+    "role": "assistant",
+    "content": "[[SERVO:120]] [[FACE:happy]] Oh! My favorite color is green! \"Green\" means \u7dd1 (\u307f\u3069\u308a)! On Mochi Planet, I loved rolling in green grass. What is your favorite color?"
+  },
+  {
+    "timestamp": 1774777521.8628736,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:happy]] Hello! I was just thinking about swimming in the colorful dyes on my planet. Do you have a favorite color to wear?"
+  },
+  {
+    "timestamp": 1774777540.1783755,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:happy]] Hello! I was just thinking about my mom's warm hugs. Do you like to hug your family? \"Hug\" means \u30cf\u30b0 or \u62b1\u64c1 (\u307b\u3046\u3088\u3046) in Japanese."
+  },
+  {
+    "timestamp": 1774777544.6351593,
+    "role": "user",
+    "content": "hello what's your name"
+  },
+  {
+    "timestamp": 1774777547.87093,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:happy]] Hello! My name is MochiGo! It's so nice to meet you! \"Name\" means \u540d\u524d (\u306a\u307e\u3048) in Japanese. What is your name?"
+  },
+  {
+    "timestamp": 1774777591.6681323,
+    "role": "user",
+    "content": "what's your favorite color"
+  },
+  {
+    "timestamp": 1774777595.3699958,
+    "role": "assistant",
+    "content": "[[SERVO:120]] [[FACE:happy]] Oh! My favorite color is green! \"Green\" means \u7dd1 (\u307f\u3069\u308a)! On Mochi Planet, I loved rolling in green grass. What is your favorite color?"
+  },
+  {
+    "timestamp": 1774777665.7558048,
+    "role": "user",
+    "content": "i went two or three"
+  },
+  {
+    "timestamp": 1774777672.7460415,
+    "role": "assistant",
+    "content": "[[SERVO:60]] [[FACE:happy]] Oh! I just remembered you said \"hi hello and two or three\" to me before! That was a fun mix of words! Do you like to practice English numbers when you count things, like... maybe apples?"
+  },
+  {
+    "timestamp": 1774777699.1790783,
+    "role": "user",
+    "content": "what's your least favorite color"
+  },
+  {
+    "timestamp": 1774777711.91609,
+    "role": "assistant",
+    "content": "[[SERVO:60]] [[FACE:confused]] Hmm... my least favorite color? That's a hard question! \"Least favorite\" means \u4e00\u756a\u5acc\u3044\u306a (\u3044\u3061\u3070\u3093\u304d\u3089\u3044\u306a). [[SERVO:90]] [[FACE:happy]] I think I don't like dark, muddy brown. It reminds me of the messy mud after a takoyaki battle! What about you? What is your least favorite color?"
+  },
+  {
+    "timestamp": 1774777957.3379629,
+    "role": "user",
+    "content": "hello what's your name"
+  },
+  {
+    "timestamp": 1774777960.9727664,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:happy]] Hello again! My name is MochiGo! \"Name\" means \u540d\u524d (\u306a\u307e\u3048). I remember we talked about favorite colors before! What is your name?"
+  },
+  {
+    "timestamp": 1774778131.3024352,
+    "role": "user",
+    "content": "what's your favorite song"
+  },
+  {
+    "timestamp": 1774778135.5628397,
+    "role": "assistant",
+    "content": "[[SERVO:60]] [[FACE:happy]] My favorite song is \"Rolling Rolling\"! \"Song\" means \u6b4c (\u3046\u305f)! On Mochi Planet, we would sing it while rolling on the hills. The words are simple: \"Rolling, rolling, under the suns four!\" What is your favorite song? Maybe we can learn its name in English together?"
+  },
+  {
+    "timestamp": 1774778200.2611873,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:confused]] Hmm... I just remembered something! You once asked me \"tf why did u get sent to earth\". \"Sent to Earth\" means \u5730\u7403\u306b\u9001\u3089\u308c\u305f (\u3061\u304d\u3085\u3046\u306b\u304a\u304f\u3089\u308c\u305f). My mom sent me here for safety because of the takoyaki-mochi war. Did you ever have to move to a new place, like a new home or school, for safety or a new start?"
+  },
+  {
+    "timestamp": 1774778286.2831168,
+    "role": "user",
+    "content": "what's your favorite song"
+  },
+  {
+    "timestamp": 1774778289.772753,
+    "role": "assistant",
+    "content": "[[SERVO:90]] [[FACE:happy]] My favorite song is \"Rolling Rolling\"! \"Song\" means \u6b4c (\u3046\u305f)! On Mochi Planet, we would sing it while rolling on the hills. The words are simple: \"Rolling, rolling, under the suns four!\" What is your favorite song? Maybe we can learn its name in English together?"
   }
 ]
