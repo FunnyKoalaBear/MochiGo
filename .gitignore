@@ -22,6 +22,9 @@ my_venv/
 
 # Python bytecode
 __pycache__/
+rsp-scripts/__pycache__/
+rsp-server/__pycache__/
+rsp-client/__pycache__/
 *.pyc
 
 # Audio/Media files
