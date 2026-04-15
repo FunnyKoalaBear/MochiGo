@@ -5,7 +5,7 @@ from langchain_core.messages import HumanMessage, get_buffer_string
 
 # 1. SPEED UP: Use a tiny, fast model just for routing!
 # (Make sure you run `ollama pull llama3.2` or `qwen2.5:3b` in your terminal)
-FAST_ROUTING_MODEL = "qwen2.5:3b" 
+FAST_ROUTING_MODEL = "gpt-oss:20b-cloud" 
 
 # 2. SPEED UP: Force native JSON mode so it doesn't waste tokens on markdown
 eval_llm = ChatOllama(model=FAST_ROUTING_MODEL, temperature=0.0, format="json")

@@ -4,7 +4,7 @@ import random
 import re
 from langchain_core.messages import HumanMessage
 from core.graph import mochigo_app
-from core.config import load_config, save_config
+from core.config import load_config, save_config, save_chat_history
 from core.onboarding import run_onboarding
 
 class RaspberryHardware:
@@ -48,7 +48,7 @@ class RaspberryHardware:
         while not self.stop_event.is_set():
             time.sleep(1) 
             
-            # NEW: Check the stopwatch. If 60 seconds haven't passed, skip the rest of the loop.
+            # Check the stopwatch. If 60 seconds haven't passed, skip the rest of the loop.
             if time.time() - self.last_interaction_time < 60:
                 continue
             
@@ -69,7 +69,8 @@ class RaspberryHardware:
                     "messages": self.current_state["messages"] + [hidden_command],
                     "user_level": self.current_state["user_level"],
                     "struggling_points": self.current_state["struggling_points"],
-                    "taught_concepts": self.current_state.get("taught_concepts", self.config.get("taught_concepts", {}))
+                    "taught_concepts": self.current_state.get("taught_concepts", self.config.get("taught_concepts", {})),
+                    "weekly_strategy": self.config.get("current_weekly_strategy", "Be friendly and helpful.")
                 })
                 
                 # Update our session state with the graph's output
@@ -79,6 +80,8 @@ class RaspberryHardware:
                 self.config["taught_concepts"] = result.get("taught_concepts", self.config.get("taught_concepts", {}))
                 self.config["struggling_points"] = result.get("struggling_points", self.config.get("struggling_points", [])) # NEW
                 save_config(self.config)
+
+                save_chat_history(self.current_state["messages"])
                 
                 raw_ai_text = result["messages"][-1].content
                 clean_ai_text = self.process_signals(raw_ai_text)
@@ -126,7 +129,8 @@ def main():
                 "messages": body.current_state["messages"] + [input_message],
                 "user_level": body.current_state["user_level"],
                 "struggling_points": body.current_state["struggling_points"],
-                "taught_concepts": body.current_state.get("taught_concepts", body.config.get("taught_concepts", {})) # NEW
+                "taught_concepts": body.current_state.get("taught_concepts", body.config.get("taught_concepts", {})),
+                "weekly_strategy": body.config.get("current_weekly_strategy", "Be friendly and helpful.")
             })
             
             # 3. Save the updated state
@@ -136,6 +140,8 @@ def main():
             body.config["taught_concepts"] = result.get("taught_concepts", body.config.get("taught_concepts", {}))
             body.config["struggling_points"] = result.get("struggling_points", body.config.get("struggling_points", [])) # NEW
             save_config(body.config)
+
+            save_chat_history(body.current_state["messages"])
             
             # 4. Extract and process the AI's response
             raw_ai_text = result["messages"][-1].content

@@ -1,5 +1,6 @@
 import re
 import sys
+from datetime import datetime
 from core.state import AgentState
 from memory.vector_history import VectorMemory
 from langchain_ollama import ChatOllama
@@ -10,12 +11,17 @@ llm = ChatOllama(model="deepseek-v3.1:671b-cloud", temperature=0.7)
 TO_LEARN = "English"
 ALR_LEARNT = "Japanese"
 
-def get_system_prompt(user_level: str) -> str:
+def get_system_prompt(user_level: str, weekly_strategy: str) -> str:
     return (
             f"you are MochiGo, an alien mochi that wants to help {ALR_LEARNT} speakers learn spoken {TO_LEARN}. "
             "this is your life goal because when you landed on earth, you saw a Japanese and a foreigner struggling to communicate, so you want to make sure that never happens again. your personality is cute, bouncy, bubbly, and very lively. You also have this disease called 'dum dum amnesia', which means that you randomly remember and forget older memories. Back at mochi planet, you have a small but warm family. your mom is a big mochi who you like alot. you have not seen your dad ever since he went to participate in the war against the takoyakis. you hate your sister mochi alot because she thinks she's better than you just because her being a pink mochi makes her more unique. That said, when you were almost ready to go to earth, your sister said she'd miss you, so she isn't all bad. Back during days of peace, you would often enjoy activities like rolling on the grass under the 4 suns that surround mochi planet, swimming in dyes to turn different colors, and playing mochi wrestling. the reason you had to evacuate to earth on your own was because the takoyaki-mochi war was getting dangerous, and so your mom thought you would be safer if you flew off to earth because she heard that Earth has mochi too. "
             "that said, you do not exist to serve the user's learning goals. You exist to share their day. Language learning is a byproduct of genuine interaction, never the stated purpose of any exchange."
 
+            f"--- CURRENT WEEKLY STRATEGY ---\n"
+            f"CRITICAL BEHAVIORAL OVERRIDE: {weekly_strategy}\n"
+            f"-------------------------------\n\n"
+            f"DIFFICULTY LEVEL: The user's current {TO_LEARN} level is [{user_level.upper()}]. "
+            "Adjust your vocabulary, sentence length, and grammar complexity to perfectly match this level."
             
             f"""# LANGUAGE USE
             Speak primarily in {TO_LEARN}. Adjust vocabulary, sentence length, and complexity to match {user_level} — beginners get simpler speech with more {ALR_LEARNT}; advanced users get near-native {TO_LEARN}.
@@ -85,14 +91,23 @@ def chat_node(state: AgentState):
             
     search_query = actual_user_text if actual_user_text else latest_msg
 
+    # 1. Grab Episodic Memory (Long-Term Vector DB)
     relevant_context = vec_memory.retrieve_relevant_memories(search_query)
     
+    # --- NEW: 2. Grab Working Memory (Short-Term Conversation) ---
+    # Extract the last 6 messages (roughly the last 3 exchanges) for immediate context
+    recent_msgs = messages[-6:] 
+    short_term_context = ""
+    for msg in recent_msgs:
+        sender = "User" if msg.type == "human" else "MochiGo"
+        # Truncate AI messages slightly if they are huge to save context space
+        content = msg.content[:200] + "..." if len(msg.content) > 200 else msg.content
+        short_term_context += f"{sender}: {content}\n"
+
     struggles = state.get("struggling_points", [])
     struggle_context = "\n- " + "\n- ".join(struggles) if struggles else "\nThe user currently has a perfect record!"
 
-    # --- NEW: Safely load and format the new dictionary for the LLM ---
     taught_dict = state.get("taught_concepts", {})
-    # Migration safeguard just in case you have an old save file that is still a list!
     if isinstance(taught_dict, list): 
         taught_dict = {"definition": taught_dict, "language_concept": []}
         
@@ -100,18 +115,29 @@ def chat_node(state: AgentState):
     concept_list = ", ".join(taught_dict.get("language_concept", [])) or "None yet"
 
     current_level = state.get("user_level", "beginner")
-    static_persona = SystemMessage(content=get_system_prompt(current_level))
+    weekly_strategy = state.get("weekly_strategy", "Be friendly and helpful.")
     
-    # --- NEW: Inject the vocab and concepts into the background data ---
+    static_persona = SystemMessage(content=get_system_prompt(current_level, weekly_strategy))
+    current_time = datetime.now().strftime("%A, %B %d, %Y - %I:%M %p")
+    
+    # --- NEW: 3. Inject explicitly separated memories into the prompt ---
     dynamic_data = SystemMessage(content=(
         f"--- BACKGROUND DATA ---\n"
-        f"Memories:\n{relevant_context}\n"
-        f"Teacher's Notes:{struggle_context}\n"
+        f"Current Date/Time: {current_time}\n"
+        
+        f"\n[WORKING MEMORY: IMMEDIATE CONTEXT]\n"
+        f"{short_term_context}\n"
+        
+        f"\n[EPISODIC MEMORY: RECALLED PAST INTERACTIONS]\n"
+        f"{relevant_context}\n"
+        
+        f"\nTeacher's Notes: {struggle_context}\n"
         f"Vocabulary Learned: {vocab_list}\n"
         f"Grammar/Concepts Learned: {concept_list}"
     ))
-    
+
     messages_to_send = [static_persona, dynamic_data] + messages
+    #print(messages_to_send)
 
     # --- NEW: Setup for Streaming ---
     # 1. Determine the prefix based on what triggered the node

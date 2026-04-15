@@ -2,6 +2,57 @@
     "is_first_boot": false,
     "user_level": "intermediate",
     "speech_practice_count": 0,
-    "taught_concepts": {},
-    "struggling_points": []
+    "taught_concepts": {
+        "definition": [
+            "invader",
+            "astute",
+            "abstract",
+            "gay",
+            "granular",
+            "imagination",
+            "service",
+            "pink",
+            "cute",
+            "grass",
+            "cycle",
+            "spies"
+        ],
+        "language_concept": [
+            "fun vs funny",
+            "what is passive voice usage?",
+            "passive voice usage?",
+            "shop vs store distinction",
+            "\"hi\" should be capitalized"
+        ]
+    },
+    "struggling_points": [
+        "\"o dam\" \u2192 \"oh damn\" or informal \"oh man\"",
+        "\"chiling\" \u2192 \"chilling\"",
+        "\"hi\" should be capitalized as \"Hi\"",
+        "\"ur\" should be \"you're\" or \"you are\" in written English",
+        "improper passive voice construction (\"was done\" for person)",
+        "\"hi\" should be capitalized",
+        "\"i\" should be capitalized",
+        "\"u\" should be \"you\"",
+        "\"im\" should be \"I'm\""
+    ],
+    "user_persona": {
+        "likes": [
+            "casual conversation",
+            "informal interaction",
+            "quick check-ins"
+        ],
+        "dislikes": [
+            "formal greetings",
+            "lengthy introductions",
+            "structured protocol"
+        ],
+        "mood_trends": "Relaxed and informal, preferring a quick, friendly reconnection rather than a formal start to a session."
+    },
+    "optimal_learning_style": "They respond best to a conversational, friendly tutor who uses informal language and relatable analogies. Corrections should be woven gently into the natural flow of chat rather than presented as formal lessons. Keeping the tone light, playful, and personal will keep them engaged.",
+    "current_weekly_strategy": "This week, maintain a super casual, friendly tone like you're catching up with a pal, focusing on quick chats about how they're relaxing or what they're currently chilling with. Keep passively modeling the correct forms for \"u\" \u2192 \"you,\" \"ur\" \u2192 \"you're,\" and \"i\" \u2192 \"I\" by weaving the right versions smoothly into your own replies, ensuring the conversation stays light and engaging while demonstrating proper usage.",
+    "strategy_history": [
+        "This week, maintain a warm, friendly, and informal tone, weaving in topics about relaxing, casual hobbies, and how their week is going to build rapport. Gently and conversationally correct the specific written mistakes: \"ur\" to \"you're/you are,\" \"u\" to \"you,\" lowercase \"i\" to \"I,\" and \"chiling\" to \"chilling\" by modeling the correct form in your responses. Keep all corrections seamless and encouraging to avoid disrupting the flow of our chat.",
+        "Maintain a warm and friendly conversational tone this week, focusing on casual topics like how their relaxation time is going and asking about their favorite familiar hobbies or settings. Continue to gently model corrections for \"im\" \u2192 \"I'm,\" improper passive voice (e.g., rephrasing \"was done by me\" to \"I did\"), and the persistent capitalization of \"hi\" and \"i,\" always weaving the right form naturally into your replies to keep the flow positive and engaging."
+    ]
 }

@@ -1,0 +1,27 @@
+[
+    {
+        "type": "human",
+        "data": {
+            "content": "im back",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "human",
+            "name": null,
+            "id": "2a84423e-0beb-489b-8f5b-b937e30d4d13"
+        }
+    },
+    {
+        "type": "ai",
+        "data": {
+            "content": "[[SERVO:90]] [[FACE:happy]] Oh hello again... I was just thinking about how the sky looks a bit like Mochi Planet today... all soft and gray like mochi flour.",
+            "additional_kwargs": {},
+            "response_metadata": {},
+            "type": "ai",
+            "name": null,
+            "id": "8f986111-4622-471e-bc66-0c9c1fc6215a",
+            "tool_calls": [],
+            "invalid_tool_calls": [],
+            "usage_metadata": null
+        }
+    }
+]
